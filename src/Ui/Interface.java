@@ -1,3 +1,5 @@
+package Ui;
+
 public class Interface {
 	public Monopoly _monopoly;
 

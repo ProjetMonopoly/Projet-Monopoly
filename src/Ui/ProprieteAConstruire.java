@@ -1,6 +1,10 @@
+package Ui;
+
+import java.util.ArrayList;
+
 public class ProprieteAConstruire extends CarreauPropriete {
-	private int _nbMaisons = 0;
-	private java.util.ArrayList<int> _loyerMaison;
+	private final int _nbMaisons = 0;
+	private ArrayList<Integer> _loyerMaison;
 	private Groupe _groupePropriete;
 
 	public int getConstruction() {

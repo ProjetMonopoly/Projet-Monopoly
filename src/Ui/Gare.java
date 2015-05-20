@@ -1,3 +1,5 @@
+package Ui;
+
 public class Gare extends CarreauPropriete {
 
 	public void calculLoyerGare(int aLb, int aNbg) {

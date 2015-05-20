@@ -1,3 +1,5 @@
+package Ui;
+
 import java.util.ArrayList;
 
 public class Monopoly {
