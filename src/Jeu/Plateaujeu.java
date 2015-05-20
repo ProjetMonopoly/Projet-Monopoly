@@ -17,7 +17,13 @@ public class Plateaujeu {
     
     private MonopolyPlat monop;
     
-    
+    public class jeu {
+       public static void main(String[] args) {        
+          
+                Monopoly mon = new Monopoly("/users/info/pub/1a/M2104/data.txt");
+                
+       }
+}
     monop= new MonopolyPlat("~/M2013-Java/projet-test/data.txt");
     
 }
