@@ -7,7 +7,7 @@
 package Jeu;
 
 
-import Data.MonopolyPlat;
+import Data.Monopoly;
 
 /**
  *
@@ -15,15 +15,12 @@ import Data.MonopolyPlat;
  */
 public class Plateaujeu {
     
-    private MonopolyPlat monop;
+    private Monopoly monop;
     
-    public class jeu {
        public static void main(String[] args) {        
           
-                Monopoly mon = new Monopoly("/users/info/pub/1a/M2104/data.txt");
+                Monopoly monop = new Monopoly("/users/info/pub/1a/M2104/data.txt");
                 
        }
 }
-    monop= new MonopolyPlat("~/M2013-Java/projet-test/data.txt");
     
-}

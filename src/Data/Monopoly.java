@@ -7,8 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class MonopolyPlat {
-	public MonopolyPlat(String dataFilename){
+public class Monopoly {
+	public Monopoly(String dataFilename){
 		buildGamePlateau(dataFilename);
 	}
 	
