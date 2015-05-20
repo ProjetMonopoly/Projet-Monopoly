@@ -19,7 +19,7 @@ public class Plateaujeu {
     
        public static void main(String[] args) {        
           
-                Monopoly monop = new Monopoly("/users/info/pub/1a/M2104/data.txt");
+                Monopoly monop = new Monopoly("/users/info/pub/1a/M2104/data.txt" );
                 
        }
 }
