@@ -8,7 +8,7 @@ package Jeu;
 
 
 
-import Data.MonopolyP;
+
 import Data.*;
 
 /**
@@ -17,11 +17,11 @@ import Data.*;
  */
 public class Main {
     
-    private MonopolyP monop;
+    private Monopoly monop;
     
        public static void main(String[] args) {        
           
-                MonopolyP monop = new MonopolyP("/users/info/pub/1a/M2104/data.txt" );
+                Monopoly monop = new Monopoly("/users/info/pub/1a/M2104/data.txt" );
                 
        }
 }

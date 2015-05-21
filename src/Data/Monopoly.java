@@ -1,14 +1,56 @@
 package Data;
 
-
+import java.util.ArrayList;
+import java.util.HashMap;
+import Data.Carreau;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class Monopoly {
-	public Monopoly(String dataFilename){
+	private int _nbMaisons = 32;
+	private int _nbHotels = 12;
+	private HashMap<Integer,Carreau> lescarreaux;
+	private ArrayList<Joueur> _joueurs = new ArrayList<Joueur>();
+	public Interface _interface_9;
+
+	public int resultatDés() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void PayerLoyerGare() {
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean getReponse() {
+		throw new UnsupportedOperationException();
+	}
+
+	public ArrayList<Joueur> getLesJoueurs() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void ProcedureAchat(Joueur aJ, CarreauPropriete aCp) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void InfoProprio(String aNomP) {
+		throw new UnsupportedOperationException();
+	}
+
+	/**
+	 * @param aCash 
+	 *  
+	 */
+	public void InfosLoyerGare(int aL, int aCash) {
+		throw new UnsupportedOperationException();
+	}
+        
+        public Monopoly(String dataFilename){
 		buildGamePlateau(dataFilename);
 	}
 	
@@ -21,7 +63,7 @@ public class Monopoly {
 			for(int i=0; i<data.size(); ++i){
 				String caseType = data.get(i)[0];
 				if(caseType.compareTo("P") == 0){
-					System.out.println("Propriété :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
+					System.out.println("Propriété :\t " + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
 				}
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
@@ -65,4 +107,3 @@ public class Monopoly {
 		return data;
 	}
 }
-
