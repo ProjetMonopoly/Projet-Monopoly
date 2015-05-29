@@ -86,7 +86,7 @@ public class Monopoly {
 	{ ///message
 		try{    
                     
-                        // mettre des commentaires
+                        // mettre des commentaires tyerityierytierytierytieryi
                         lescarreaux= new HashMap<Integer,Carreau>();
                         Carreau carreau;
                         Carreau carreauAConstruire;
