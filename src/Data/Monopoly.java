@@ -85,6 +85,8 @@ public class Monopoly {
 	private void buildGamePlateau(String dataFilename)
 	{
 		try{    
+                    
+                        // mettre des commentaires
                         lescarreaux= new HashMap<Integer,Carreau>();
                         Carreau carreau;
                         Carreau carreauAConstruire;
