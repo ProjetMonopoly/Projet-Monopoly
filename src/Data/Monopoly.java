@@ -16,31 +16,51 @@ public class Monopoly {
 	private int _nbHotels = 12;
         private int numero;
 	private HashMap<Integer,Carreau> lescarreaux;
-	private ArrayList<Joueur> _joueurs = new ArrayList<Joueur>();
+	private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
 	public Interface _interface_9;
         
-
+        public HashMap<Integer,Carreau> getLesCarreaux() {
+            return this.lescarreaux;
+        }
+        
 	public int resultatDés() {
-		return ((int) (Math.random()*6)+(int) (Math.random()*6)); 
+		return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1)); 
 	}
 
-	public void PayerLoyerGare() {
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean getReponse() {
+	
+        public boolean AchatProp(Joueur aJ, CarreauPropriete aCp) {
 		throw new UnsupportedOperationException();
 	}
 
 	public ArrayList<Joueur> getLesJoueurs() {
-		throw new UnsupportedOperationException();
+		return lesjoueurs;
 	}
 
 	public void ProcedureAchat(Joueur aJ, CarreauPropriete aCp) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void InfoProprio(String aNomP) {
+        public void InfosLoyerGare(Joueur aJProprio, int aL, int aCash) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void ProcedureConstruire(Joueur aJ, Groupe aGr) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void InfosLoyerCompagnie(Joueur aJProprio, int aL, int aCash) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void InfosLoyerPAC(Joueur aJProprio, int aL, int aCash) {
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean getReponse(Joueur aJ, ProprieteAConstruire aP) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void choixTerrain(Joueur aJ, Groupe aGr) {
 		throw new UnsupportedOperationException();
 	}
         
@@ -50,14 +70,12 @@ public class Monopoly {
             }
             return null;
         }
-
+        
+	
 	/**
 	 * @param aCash 
 	 *  
 	 */
-	public void InfosLoyerGare(int aL, int aCash) {
-		throw new UnsupportedOperationException();
-	}
         
         public Monopoly(String dataFilename){
 		buildGamePlateau(dataFilename);
@@ -182,6 +200,13 @@ public class Monopoly {
 			System.err.println("[buildGamePlateau()] : Error while reading file!");
 		}
 	}
+        
+        
+        private void buildGameJoueur(ArrayList<Joueur> lesjoueurs)
+	{
+            this.lesjoueurs=lesjoueurs;
+        }
+	
 	
 	private ArrayList<String[]> readDataFile(String filename, String token) throws FileNotFoundException, IOException
 	{
@@ -196,4 +221,8 @@ public class Monopoly {
 		
 		return data;
 	}
+
+        
+
+   
 }
