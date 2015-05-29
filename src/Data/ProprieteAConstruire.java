@@ -14,6 +14,7 @@ public class ProprieteAConstruire extends CarreauPropriete {
        
     }        
         
+        
 	public int getConstruction() {
 		return nbMaisons;
 	}

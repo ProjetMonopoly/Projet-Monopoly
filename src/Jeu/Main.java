@@ -23,20 +23,20 @@ public class Main {
     private static Monopoly monop; 
     
        public static void main(String[] args) {        
-        monop = new Monopoly("/users/info/pub/1a/M2104/data.txt" );
+        monop = new Monopoly("/users/info/etu-s2/chevillc/M2013-Java/projet-test/src/Data/src");
          
-        int compte=1;
+        int compte=0;
         HashMap<Integer, Carreau> lesCarreaux = monop.getLesCarreaux();
         
         for(Carreau c : lesCarreaux.values()){
             compte=compte+1;
-            
         }
         System.out.println(compte);
         
         
         ArrayList<Joueur> lesjoueurs = new ArrayList<>();
-        Carreau carreauInit = monop.getCarreau(1);
+        Carreau carreauInit = lesCarreaux.get(1);
+        
         int nbJoueur;
         
         Scanner sc1 = new Scanner(System.in);
@@ -51,7 +51,7 @@ public class Main {
         
         for (Joueur j: lesjoueurs ){
             System.out.println(j.getNomJoueur());
-            System.out.println(j.getCarreau());
+            System.out.println(j.getCarreau().getNomCarreauMaison());
             System.out.println("YESSS");
         }
                 

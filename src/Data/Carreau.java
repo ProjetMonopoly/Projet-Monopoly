@@ -11,7 +11,7 @@ public abstract class Carreau {
         }
 
        
-        ///fdsf sdfsdfsdfsd
+        
         public String getNomCarreau(int numero) {
             this.numero=numero;
             return nomCarreau;
@@ -33,6 +33,8 @@ public abstract class Carreau {
 	public String getNomCarreauMaison() {
             return nomCarreau;
 	}
+        
+        
 
         
         

@@ -20,7 +20,7 @@ public class Monopoly {
 	public Interface _interface_9;
         
         public HashMap<Integer,Carreau> getLesCarreaux() {
-            return this.lescarreaux;
+            return lescarreaux;
         }
         
 	public int resultatDés() {
@@ -65,10 +65,8 @@ public class Monopoly {
 	}
         
         public Carreau getCarreau(int numero){
-            if (numero == this.numero){
-                return lescarreaux.get(numero);
-            }
-            return null;
+            
+            return lescarreaux.get(numero); //returne le carreau avec un numero
         }
         
 	
@@ -83,10 +81,10 @@ public class Monopoly {
 	
         @SuppressWarnings("empty-statement")
 	private void buildGamePlateau(String dataFilename)
-	{ ///message tgdrtgg
+	{ ///message 
 		try{    
                     
-                        // mettre des commentaires tyerityierytierytierytieryi
+                        // mettre des commentaires 
                         lescarreaux= new HashMap<Integer,Carreau>();
                         Carreau carreau;
                         Carreau carreauAConstruire;
@@ -119,9 +117,9 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new ProprieteAConstruire(loyer, Integer.parseInt(data.get(i)[5]),Integer.parseInt(data.get(i)[4]),Integer.parseInt(data.get(i)[1]),data.get(i)[2]);
                                         
-                                        carreau= getCarreau(Integer.parseInt(data.get(i)[1]));
                                         
-                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreau);
+                                        
+                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
                                         
                                         System.out.println("ajouté propriété fait");
                                         
@@ -136,9 +134,9 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new Gare(Integer.parseInt(data.get(i)[3]), Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
                                         
-                                        carreau= getCarreau(Integer.parseInt(data.get(i)[1]));
                                         
-                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreau);
+                                        
+                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
                                         
                                         System.out.println("ajouté gare fait");
                                         
@@ -149,9 +147,9 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new Compagnie(Integer.parseInt(data.get(i)[3]), Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
                                         
-                                        carreau= getCarreau(Integer.parseInt(data.get(i)[1]));
                                         
-                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreau);
+                                        
+                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
                                         
                                         System.out.println("ajouté Companie fait");
                                         
@@ -161,9 +159,9 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new CarreauTirage(Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
                                         
-                                        carreau= getCarreau(Integer.parseInt(data.get(i)[1]));
+                                       
                                         
-                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreau);
+                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
                                         
                                         System.out.println("ajouté carte tirage fait");
                                         
@@ -173,9 +171,8 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new CarreauArgent(Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
                                         
-                                        carreau= getCarreau(Integer.parseInt(data.get(i)[1]));
-                                        
-                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreau);
+                                       
+                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
                                         
                                         System.out.println("ajouté case argent fait");
 				}
@@ -184,9 +181,9 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new CarreauMouvement(Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
                                         
-                                        carreau= getCarreau(Integer.parseInt(data.get(i)[1]));
                                         
-                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreau);
+                                        
+                                        lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire );
                                         
                                         System.out.println("ajouté case mouvement fait");
 				}
