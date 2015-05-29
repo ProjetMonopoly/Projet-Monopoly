@@ -4,7 +4,7 @@ public abstract class Carreau {
 	private int numero;
 	private String nomCarreau;
 	private Monopoly monopoly;
-
+        
         public Carreau(int _numero, String _nomCarreau) {
             this.numero = _numero;
             this.nomCarreau = _nomCarreau;
