@@ -47,8 +47,15 @@ public class Joueur {
 	}
 
 	public void ModifPosition(int numero) {
-		positionCourante.setNumero(numero);
+            if (positionCourante.getNumcarreauCourant()+numero >40){
+                int decalage;
+                decalage=positionCourante.getNumcarreauCourant()+numero-40;
+                positionCourante.setNumero(decalage);
+            }else{positionCourante.setNumero(numero+positionCourante.getNumcarreauCourant());
+            }
 	}
+        
+        
 
 	public ArrayList<ProprieteAConstruire> getLesPropio() {
 		return lesproprietesAConstruire;

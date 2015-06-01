@@ -64,6 +64,10 @@ public class Main {
             
         }
         
+        for (Joueur j: lesjoueurs ){
+            monop.LancerDésEtAvancer(j);
+        }
+        
         
     }   
        
