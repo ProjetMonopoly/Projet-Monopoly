@@ -10,6 +10,7 @@ public class Joueur {
 	private ArrayList<Gare> lesgares = new ArrayList<Gare>();
 	private Carreau positionCourante;
 	private ArrayList<ProprieteAConstruire> lesproprietesAConstruire = new ArrayList<ProprieteAConstruire>();
+        private int numerodebut;//pour savoir qui va commencer
 
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -68,6 +69,14 @@ public class Joueur {
 	public void CashRestant(int aL) {
 		throw new UnsupportedOperationException();
 	}
+        
+        public void setNumeroDebut(){
+            this.numerodebut=((int) (Math.random()*6) + 1);
+        }
+        
+        public int getNumeroDebut(){
+            return numerodebut;
+        }
 
 	//public Collection VerifConstruction(ProprieteAConstruire aP, Groupe aGr) {
 	//	throw new UnsupportedOperationException();

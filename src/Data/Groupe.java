@@ -6,6 +6,9 @@ public class Groupe {
 	private int prixAchatMaison;
 	private CouleurPropriete couleur;
 	private ArrayList<ProprieteAConstruire> lesproprietes = new ArrayList<ProprieteAConstruire>();
+        
+        
+        
 
         public Groupe(ArrayList<ProprieteAConstruire> lesproprietes, CouleurPropriete couleur) {
             this.lesproprietes=lesproprietes;
@@ -17,17 +20,12 @@ public class Groupe {
         }
         
         public CouleurPropriete getCouleur() {
-		return this.couleur;
-	}
-
-	public CouleurPropriete getNomGr() {
 		return couleur;
 	}
+       
 
-	public Groupe getGroupe() {
-		return this;
-	}
-      
+        
+        
 
         public void setPrixAchatMaison(int prixAchatMaison) {
             this.prixAchatMaison = prixAchatMaison;

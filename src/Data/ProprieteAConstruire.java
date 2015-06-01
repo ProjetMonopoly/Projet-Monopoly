@@ -1,11 +1,13 @@
 package Data;
 
+import static Data.CouleurPropriete.*;
 import java.util.ArrayList;
 
 public class ProprieteAConstruire extends CarreauPropriete {
 	private final int nbMaisons = 0;
 	private ArrayList<Integer> lesloyerMaison;
-	private Groupe groupePropriete;
+        private Groupe groupePropriete;
+        //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
 
     public ProprieteAConstruire(ArrayList<Integer> lesloyerMaison, int loyerBase, int prixAchat, int numero, String nomCarreau) {
         super(loyerBase, prixAchat, numero, nomCarreau);
@@ -42,5 +44,11 @@ public class ProprieteAConstruire extends CarreauPropriete {
 	public Groupe getGroupe() {
 		return groupePropriete;
 	}
+        
+        public String getCouleurGroupe(){
+            return groupePropriete.getCouleur().name();
+        }
+        
+        
 	
 }

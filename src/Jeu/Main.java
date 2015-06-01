@@ -13,6 +13,7 @@ import Data.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  *
@@ -24,12 +25,14 @@ public class Main {
     
        public static void main(String[] args) {        
         monop = new Monopoly("/users/info/etu-s2/chevillc/M2013-Java/projet-test/src/Data/src");
+        TreeSet<Joueur> ordre = new TreeSet<>();
          
         int compte=0;
         HashMap<Integer, Carreau> lesCarreaux = monop.getLesCarreaux();
         
         for(Carreau c : lesCarreaux.values()){
             compte=compte+1;
+            
         }
         System.out.println(compte);
         
@@ -49,13 +52,27 @@ public class Main {
             lesjoueurs.add(j);
         }
         
-        for (Joueur j: lesjoueurs ){
+        
+        for (Joueur j: lesjoueurs ){//pour tester si l'inscription des joueurs a bien été effectué
             System.out.println(j.getNomJoueur());
             System.out.println(j.getCarreau().getNomCarreauMaison());
-            System.out.println("YESSS");
         }
-                
-       }
+        
+        for (Joueur j: lesjoueurs ){
+            j.setNumeroDebut();
+            System.out.println("le Joueur "+ j.getNomJoueur() + " a eu le score " + j.getNumeroDebut());
+            
+        }
+        
+        
+    }   
+       
+}
+       
+
+
+
+
        
        
        
@@ -65,5 +82,5 @@ public class Main {
        
        
        
-}
+
     
