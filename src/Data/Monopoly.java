@@ -1,8 +1,7 @@
 package Data;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import Data.Carreau;
+import static Data.CouleurPropriete.*;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -18,6 +17,7 @@ public class Monopoly {
 	private HashMap<Integer,Carreau> lescarreaux;
 	private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
 	public Interface _interface_9;
+        private ArrayList<Groupe> groupe = new ArrayList<>();
         
         public HashMap<Integer,Carreau> getLesCarreaux() {
             return lescarreaux;
@@ -65,8 +65,29 @@ public class Monopoly {
 	}
         
         public Carreau getCarreau(int numero){
-            
             return lescarreaux.get(numero); //returne le carreau avec un numero
+        }
+  
+        public void CréerGroupe(){
+            //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
+            Groupe Bleufonce = new Groupe(null,bleuFonce);
+            Groupe Orange = new Groupe(null,orange);
+            Groupe Mauve = new Groupe(null,mauve);
+            Groupe Violet = new Groupe(null,violet);
+            Groupe Bleuciel = new Groupe(null,bleuCiel);
+            Groupe Jaune = new Groupe(null,jaune);
+            Groupe Vert = new Groupe(null,vert);
+            Groupe Rouge = new Groupe(null,rouge);
+            
+            groupe.add(Bleufonce);
+            groupe.add(Orange);
+            groupe.add(Mauve);
+            groupe.add(Violet);
+            groupe.add(Bleuciel);
+            groupe.add(Jaune);
+            groupe.add(Vert);
+            groupe.add(Rouge);
+            
         }
         
 	
@@ -90,12 +111,12 @@ public class Monopoly {
                         Carreau carreauAConstruire;
                         ArrayList<Integer> loyer ;
                         ArrayList<ProprieteAConstruire> pro;
-                        Groupe groupe;
 			ArrayList<String[]> data = readDataFile(dataFilename, ",");
 			
 			//TODO: create cases instead of displaying
                         loyer = new ArrayList<>();
                         pro = new ArrayList<>();
+                        
                         
 			for(int i=0; i<data.size(); ++i){
 				String caseType = data.get(i)[0];
@@ -117,10 +138,17 @@ public class Monopoly {
                                         
                                         carreauAConstruire = new ProprieteAConstruire(loyer, Integer.parseInt(data.get(i)[5]),Integer.parseInt(data.get(i)[4]),Integer.parseInt(data.get(i)[1]),data.get(i)[2]);
                                         
-                                        
+                                        for (Groupe g: groupe){
+                                            
+                                            if ((CouleurPropriete.valueOf(data.get(i)[3])) == g.getCouleur()){
+                                                g.addPropriete((ProprieteAConstruire) carreauAConstruire);
+                                                
+                                            }
+                                        }
                                         
                                         lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
                                         
+                                       
                                         System.out.println("ajouté propriété fait");
                                         
                                      }  
@@ -205,6 +233,10 @@ public class Monopoly {
 	{
             this.lesjoueurs=lesjoueurs;
         }
+        
+      
+            
+        
 	
 	
 	private ArrayList<String[]> readDataFile(String filename, String token) throws FileNotFoundException, IOException
