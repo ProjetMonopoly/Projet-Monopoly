@@ -11,19 +11,31 @@ public class Interface {
 		throw new UnsupportedOperationException();
 	}
 
-	public void infoJoueurProprio(int aConstruction, CouleurPropriete aGroupe, String aNomCase) {
+	public void infoJoueurProprio(int aConstruction, CouleurPropriete aGroupe, String aNomc) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void InfoProprio_nomP___String_() {
+	public void InfosLoyerGare(Joueur aJProprio, int aL, int aCash) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void InfosLoyerGare(int aL, int aCash) {
+	public void InfoAchat(Joueur aJ, CarreauPropriete aCp) {
 		throw new UnsupportedOperationException();
 	}
 
-	public void Infos(String aNomCarreau, String aNomG, int aPrixA) {
+	public void InfoConstruire(Joueur aJ, Groupe aPossibleConstruction) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void InfosLoyerCompagnie(Joueur aJProprio, int aL, int aCash) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void InfosLoyerPAC(Joueur aJProprio, int aL, int aCash) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void InfoTerrains(Joueur aJ, Groupe aGr) {
 		throw new UnsupportedOperationException();
 	}
 }
