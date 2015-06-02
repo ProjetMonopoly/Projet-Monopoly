@@ -37,7 +37,7 @@ public class Main {
         System.out.println(compte);
         
         
-        ArrayList<Joueur> lesjoueurs = new ArrayList<>();
+        
         Carreau carreauInit = lesCarreaux.get(1);
         
         int nbJoueur;
@@ -49,22 +49,22 @@ public class Main {
         for (int i=1; i<=nbJoueur; i++){
             System.out.println("Entrer le nom du joueur "+i+" :");
             Joueur j = new Joueur(sc1.nextLine(),monop,carreauInit);
-            lesjoueurs.add(j);
+            monop.setLesJoueurs(j);
         }
         
         
-        for (Joueur j: lesjoueurs ){//pour tester si l'inscription des joueurs a bien été effectué
+        for (Joueur j: monop.getLesJoueurs() ){//pour tester si l'inscription des joueurs a bien été effectué
             System.out.println(j.getNomJoueur());
             System.out.println(j.getCarreau().getNomCarreauMaison());
         }
         
-        for (Joueur j: lesjoueurs ){
+        for (Joueur j: monop.getLesJoueurs() ){
             j.setNumeroDebut();
             System.out.println("le Joueur "+ j.getNomJoueur() + " a eu le score " + j.getNumeroDebut());
             
         }
         
-        for (Joueur j: lesjoueurs ){
+        for (Joueur j: monop.getLesJoueurs() ){
             monop.LancerDésEtAvancer(j);
         }
         
