@@ -11,11 +11,15 @@ public class Joueur {
 	private Carreau positionCourante;
 	private ArrayList<ProprieteAConstruire> lesproprietesAConstruire = new ArrayList<ProprieteAConstruire>();
         private int numerodebut;//pour savoir qui va commencer
+        private int doubl = 0; //pour savoir les doubles
+        private int des;//pour le resultat du lancé de des
+        private int deplacement;// pour savoir ou est le joueur apres son lancé de dés
 
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
         this.monopoly = monopoly;
         this.positionCourante = positionCourante;
+        
     }
 
         
@@ -29,8 +33,16 @@ public class Joueur {
 		return this.nomJoueur;
 	}
         
+        public void setCarreau(Carreau c) {
+		positionCourante = c;
+	}
+        
         public Carreau getCarreau() {
 		return this.positionCourante;
+	}
+        
+        public int getNumCarreau() {
+		return this.positionCourante.getNumcarreauCourant();
 	}
 
 	public int getNbGares() {
@@ -47,11 +59,10 @@ public class Joueur {
 	}
 
 	public void ModifPosition(int numero) {
-            if (positionCourante.getNumcarreauCourant()+numero >40){
+            if (positionCourante.getNumcarreauCourant()+numero >40){ //si le numero du carreau + des > 40 alors il y a un decalage
                 int decalage;
-                decalage=positionCourante.getNumcarreauCourant()+numero-40;
-                positionCourante.setNumero(decalage);
-            }else{positionCourante.setNumero(numero+positionCourante.getNumcarreauCourant());
+                setDeplacement(positionCourante.getNumcarreauCourant()+numero-40);
+            }else{setDeplacement(numero+positionCourante.getNumcarreauCourant());
             }
 	}
         
@@ -77,15 +88,43 @@ public class Joueur {
 		throw new UnsupportedOperationException();
 	}
         
-        public void setNumeroDebut(){
+        public void setNumeroDebut(){ //pour savoir le numero qu'il a obtenu pour savoir qui commence
             this.numerodebut=((int) (Math.random()*6) + 1);
         }
         
         public int getNumeroDebut(){
             return numerodebut;
         }
+        
+        public int getDouble(){ //pour savoir si il a fait des doubles
+            return doubl;
+        }
+        
+        public void setDouble(int doubl){
+            this.doubl=doubl;
+        }
 
+        
+        
 	//public Collection VerifConstruction(ProprieteAConstruire aP, Groupe aGr) {
 	//	throw new UnsupportedOperationException();
 	//}
+
+    public int getDes() {
+        return des;
+    }
+
+    public void setDes(int des) {
+        this.des = des;
+    }
+
+    public int getDeplacement() {
+        return deplacement;
+    }
+
+    public void setDeplacement(int deplacement) {
+        this.deplacement = deplacement;
+    }
+    
+    
 }

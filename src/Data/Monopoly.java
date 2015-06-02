@@ -8,12 +8,13 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Random;
 
 
 public class Monopoly {
 	private int _nbMaisons = 32;
 	private int _nbHotels = 12;
-        private int des;//pour le resultat du lancé de des
+//        private int des;//pour le resultat du lancé de des
         private int numero; //pour le numero de la case en cour
 	private HashMap<Integer,Carreau> lescarreaux;
 	private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
@@ -24,8 +25,21 @@ public class Monopoly {
             return lescarreaux;
         }
         
-	public int resultatDés() {
-		return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1)); 
+	public int resultatDés(Joueur j) {
+            Random rnd = new Random();
+            int i = rnd.nextInt(6)+1;
+            
+            return i;
+//            int des1 = ((int) (Math.random()*6) + 1);
+//            int des2 = ((int) (Math.random()*6) + 1);
+//            
+//            if (des1==des2){ //si le joueur a un double alors se compteur de double augmente
+//                j.setDouble(j.getDouble()+1);
+//                
+//                if(j.getDouble()==3)
+//                
+//                return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1)); //a voir si il refait encore un double
+//            }else {return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1));}
 	}
         
         
@@ -36,6 +50,10 @@ public class Monopoly {
 
 	public ArrayList<Joueur> getLesJoueurs() {
 		return lesjoueurs;
+	}
+        
+        public void setLesJoueurs(Joueur j) {
+		lesjoueurs.add(j);
 	}
 
 	public void ProcedureAchat(Joueur aJ, CarreauPropriete aCp) {
@@ -93,55 +111,97 @@ public class Monopoly {
         }
         
         public void LancerDésEtAvancer(Joueur j){
-            des = resultatDés();
-            j.ModifPosition(des);
+            boolean verif = true;
             
-            Carreau carreauCourant;
+            System.out.println("");
+            int des1=0;
+            int des2=0;
             
-            String nomCarreau;
-            nomCarreau=j.getCarreau().getNomCarreauMaison();  //Nom carreau 
+            des1=resultatDés(j);
+            des2=resultatDés(j);
             
-            String nomJoueur;
-            nomJoueur= j.getNomJoueur();
-            
-            System.out.println("Le joueur " + nomJoueur + " à fait un " + des + " ce qui l'amene sur la case " + nomCarreau);
-            
-            //premiere étape ok 
-            
-            ArrayList<Joueur> collectionJoueur = new ArrayList<>();
-            collectionJoueur=lesjoueurs;
-            
-            for (Joueur i: collectionJoueur){
-                int cash;
-                cash=i.getCash(); // l'argent que possede le joueur
+            j.setDouble(0);
+            if (des2 == des1){
                 
-                nomJoueur = i.getNomJoueur();
-                
-                int numero;
-                numero = i.getCarreau().getNumcarreauCourant();
-                
-                System.out.println("Le joueur " + nomJoueur + " à " + cash + "€ et est sur la case numero " +numero);
-                
-                ArrayList<ProprieteAConstruire> collectProprio = i.getLesPropio();
-                
-                for ( ProprieteAConstruire p : collectProprio){
-                    int construction;
-                    construction = p.getConstruction();
+                while (verif==true){
+                    des1=resultatDés(j);
+                    des2=resultatDés(j);
+
+                    j.setDouble(j.getDouble()+1);
+
+                    if (j.getDouble()==3){
+                        j.setDouble(0);
+                        Carreau carreauPrison = lescarreaux.get(11);
+                        j.setCarreau(carreauPrison);
+                        
+                        System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreauMaison());
+                        
+                        verif = false;
+                    }
                     
-                    CouleurPropriete couleur;
-                    couleur = p.getcouleurProp();
-                    
-                    String NomCase;
-                    NomCase = p.getNomMaison();
-                    
-                    System.out.println("Ce joueur possede la case " + NomCase + " de couleur " + couleur.name() + " avec un niveau de construction egal à " + construction);
+
                 }
             }
             
-        }
+            else if (verif == true) {
+                int des = 0;
+                des = des1+des2;
+                j.ModifPosition(des);
+                
+                
+                Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
+                j.setCarreau(carreauCourant); //j'associe le carreaux ou le joueur est avec le joueur
+
+                String nomCarreau;
+                nomCarreau=j.getCarreau().getNomCarreauMaison();  //Nom carreau 
+
+                String nomJoueur;
+                nomJoueur= j.getNomJoueur();
+
+                System.out.println("Le joueur " + nomJoueur + " à fait un " + des + " ce qui l'amene sur la case " + nomCarreau);
+
+                //premiere étape ok 
+
+                ArrayList<Joueur> collectionJoueur = new ArrayList<>();
+                collectionJoueur=lesjoueurs;
+
+                System.out.println("");
+                
+                for (Joueur i: collectionJoueur){
+                    int cash;
+                    cash=i.getCash(); // l'argent que possede le joueur
+
+                    nomJoueur = i.getNomJoueur();//nom joueur
+
+                    int numero;
+                    numero = i.getNumCarreau();
+
+                    System.out.println("Le joueur " + nomJoueur + " à " + cash + "€ et est sur la case numero " +numero);
+
+                    ArrayList<ProprieteAConstruire> collectProprio = i.getLesPropio();
+                    
+
+                    for ( ProprieteAConstruire p : collectProprio){
+                        int construction;
+                        construction = p.getConstruction();
+
+                        CouleurPropriete couleur;
+                        couleur = p.getcouleurProp();
+
+                        String NomCase;
+                        NomCase = p.getNomMaison();
+
+                        System.out.println("Ce joueur possede la case " + NomCase + " de couleur " + couleur.name() + " avec un niveau de construction egal à " + construction);
+                    }
+                }
+
+            }
+        }    
         
         
         public void JouerUnCoup(Joueur j){
+            LancerDésEtAvancer(j);
+            
             
         } 
         

@@ -49,6 +49,10 @@ public class ProprieteAConstruire extends CarreauPropriete {
             return groupePropriete.getCouleur().name();
         }
         
+        public Joueur getPropriétaire(){
+            super.
+        }
+        
         
 	
 }

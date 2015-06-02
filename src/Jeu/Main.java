@@ -57,12 +57,7 @@ public class Main {
             System.out.println(j.getNomJoueur());
             System.out.println(j.getCarreau().getNomCarreauMaison());
         }
-        
-        for (Joueur j: monop.getLesJoueurs() ){
-            j.setNumeroDebut();
-            System.out.println("le Joueur "+ j.getNomJoueur() + " a eu le score " + j.getNumeroDebut());
-            
-        }
+
         
         for (Joueur j: monop.getLesJoueurs() ){
             monop.LancerDésEtAvancer(j);
