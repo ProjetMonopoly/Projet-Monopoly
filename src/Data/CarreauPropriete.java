@@ -1,19 +1,19 @@
 package Data;
 
 public abstract class CarreauPropriete extends Carreau {
-	private int _loyerBase;
-	private int _prixAchat;
-	private Joueur _proprietaire;
+	private int loyerBase;
+	private int prixAchat;
+	private Joueur proprietaire;
 
         public CarreauPropriete(int _loyerBase, int _prixAchat, int _numero, String _nomCarreau) {
             super(_numero, _nomCarreau);
-            this._loyerBase = _loyerBase;
-            this._prixAchat = _prixAchat;
+            this.loyerBase = _loyerBase;
+            this.prixAchat = _prixAchat;
         }
 
         
         	public int getPrixAchat() {
-		return this._prixAchat;
+		return this.prixAchat;
 	}
 
 	public void achatPropriete() {
@@ -29,7 +29,7 @@ public abstract class CarreauPropriete extends Carreau {
 	}
 
 	public void setProprio(Joueur aJ) {
-		throw new UnsupportedOperationException();
+		proprietaire=aJ;
 	}
 
 	public boolean estProprio() {
