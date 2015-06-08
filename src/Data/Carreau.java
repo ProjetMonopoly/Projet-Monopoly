@@ -12,8 +12,7 @@ public abstract class Carreau {
 
        
         
-        public String getNomCarreau(int numero) {
-            this.numero=numero;
+        public String getNomCarreau() {
             return nomCarreau;
 	}
         
@@ -28,10 +27,6 @@ public abstract class Carreau {
 
 	public int getNumcarreauCourant() {
             return numero;
-	}
-
-	public String getNomCarreauMaison() {
-            return nomCarreau;
 	}
         
         

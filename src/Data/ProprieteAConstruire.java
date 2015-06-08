@@ -17,8 +17,18 @@ public class ProprieteAConstruire extends CarreauPropriete {
     }        
         
         
-	public int getConstruction() {
-		return nbMaisons;
+	public String getConstruction() {
+		if (nbMaisons==5){
+                    return "1 hotel";
+                }
+                else if(nbMaisons==1){
+                    return "1 maison";
+                }
+                else if(nbMaisons==0){
+                    return "0 maison";
+                }
+                return (String.valueOf(nbMaisons)+" maisons");
+                    
 	}
 
 	public CouleurPropriete getcouleurProp() {

@@ -3,16 +3,19 @@ package Data;
 public class Interface {
 	public Monopoly _monopoly;
 
-	public void infoJoueur(int aD, String aNomcarreau, String aNom) {
-		throw new UnsupportedOperationException();
+	public void infoJoueur(int D, Carreau c, Joueur j) {
+                System.out.println("Le joueur "+ j.getNomJoueur()+" :");
+                System.out.println("Total des dés : "+ D);
+                System.out.println("Le nom du carreau : "+ c.getNomCarreau());
 	}
 
-	public void infoJoueur2(int aC, String aNom, int aNumcarreauCourant) {
-		throw new UnsupportedOperationException();
+	public void infoJoueur2(Joueur j, Carreau c ) {
+                System.out.println("Le joueur "+ j.getNomJoueur()+" est sur la case "+ c.getNomCarreau()+ "avec "+ j.getCash()+"€ comme argent.");
+		System.out.println("Ces propriétés sont: " );       
 	}
 
-	public void infoJoueurProprio(int aConstruction, CouleurPropriete aGroupe, String aNomc) {
-		throw new UnsupportedOperationException();
+	public void infoPropriete(ProprieteAConstruire p, Groupe groupe) {
+		System.out.println("La propriété "+ p.getNomCarreau()+" a pour groupe "+ groupe.getCouleur()+ "et possède "+ p.getConstruction());
 	}
 
 	public void InfosLoyerGare(Joueur aJProprio, int aL, int aCash) {
@@ -35,7 +38,7 @@ public class Interface {
 		throw new UnsupportedOperationException();
 	}
 
-	public void InfoTerrains(Joueur aJ, Groupe aGr) {
-		throw new UnsupportedOperationException();
+	public void InfoTerrain(Joueur j, Groupe gr) {
+		
 	}
 }
