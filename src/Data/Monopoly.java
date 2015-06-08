@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
+import java.util.Scanner;
 
 
 public class Monopoly {
@@ -26,9 +27,9 @@ public class Monopoly {
         }
         
 	public int resultatDés(Joueur j) {
-            Random rnd = new Random();
-            int i = rnd.nextInt(6)+1;
-            
+//            Random rnd = new Random();
+//            int i = rnd.nextInt(6)+1;
+            int i=2;
             return i;
 //            int des1 = ((int) (Math.random()*6) + 1);
 //            int des2 = ((int) (Math.random()*6) + 1);
@@ -42,10 +43,21 @@ public class Monopoly {
 //            }else {return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1));}
 	}
         
+        public void procedureAchat(Joueur aJ, CarreauPropriete aCp) {
+            System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC() );
+        }
         
-	
-        public boolean AchatProp(Joueur aJ, CarreauPropriete aCp) {
-		throw new UnsupportedOperationException();
+        public boolean AchatProp() {
+            
+            Scanner sc1 = new Scanner(System.in);
+            System.out.println("Vous voulez l'acheter (oui/non) ? ");
+            String reponse = sc1.nextLine();
+                
+            if (reponse == "oui") {
+                    return true;
+            }else{
+                    return false;
+            }
 	}
 
 	public ArrayList<Joueur> getLesJoueurs() {
@@ -57,11 +69,11 @@ public class Monopoly {
 	}
 
 	public void ProcedureAchat(Joueur aJ, CarreauPropriete aCp) {
-		throw new UnsupportedOperationException();
+		System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC() );
 	}
 
-        public void InfosLoyerGare(Joueur aJProprio, int aL, int aCash) {
-		throw new UnsupportedOperationException();
+        public void InfosLoyerGare(Joueur jproprio, int l, int Cash) {
+		System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l + ", il vous reste " + Cash +'€');
 	}
 
 	public void ProcedureConstruire(Joueur aJ, Groupe aGr) {
@@ -117,7 +129,7 @@ public class Monopoly {
             int des1=0;
             int des2=0;
             
-            des1=resultatDés(j);
+            des1=resultatDés(j)+1;
             des2=resultatDés(j);
             
             j.setDouble(0);
@@ -132,9 +144,9 @@ public class Monopoly {
                     if (j.getDouble()==3){
                         j.setDouble(0);
                         Carreau carreauPrison = lescarreaux.get(11);
-                        j.setCarreau(carreauPrison);
+                        j.setPositionCourante(carreauPrison);
                         
-                        System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreauMaison());
+                        System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
                         
                         verif = false;
                     }
@@ -150,10 +162,10 @@ public class Monopoly {
                 
                 
                 Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
-                j.setCarreau(carreauCourant); //j'associe le carreaux ou le joueur est avec le joueur
+                j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
 
                 String nomCarreau;
-                nomCarreau=j.getCarreau().getNomCarreauMaison();  //Nom carreau 
+                nomCarreau=j.getCarreau().getNomCarreau();  //Nom carreau 
 
                 String nomJoueur;
                 nomJoueur= j.getNomJoueur();
@@ -202,6 +214,13 @@ public class Monopoly {
         public void JouerUnCoup(Joueur j){
             LancerDésEtAvancer(j);
             
+            Carreau c = j.getCarreau(); // pour avoir le carreau actuel
+            
+            if ((c.getNumcarreauCourant()==6) || (c.getNumcarreauCourant()==16) || (c.getNumcarreauCourant()==26) || (c.getNumcarreauCourant()==36)){
+                Carreau ctest = j.getCarreau();
+                ctest.action(j);
+                  
+            }
             
         } 
         
@@ -251,7 +270,7 @@ public class Monopoly {
                                         //ProprieteAConstruire(ArrayList<Integer> _loyerMaison, Groupe _groupePropriete, int _loyerBase, int _prixAchat, int _numero, String _nomCarreau)
                                         
                                         
-                                        carreauAConstruire = new ProprieteAConstruire(loyer, Integer.parseInt(data.get(i)[5]),Integer.parseInt(data.get(i)[4]),Integer.parseInt(data.get(i)[1]),data.get(i)[2]);
+                                        carreauAConstruire = new ProprieteAConstruire(loyer, Integer.parseInt(data.get(i)[5]),Integer.parseInt(data.get(i)[4]),Integer.parseInt(data.get(i)[1]),data.get(i)[2],this);
                                         
                                         for (Groupe g: groupe){
                                             
@@ -275,7 +294,7 @@ public class Monopoly {
 				else if(caseType.compareTo("G") == 0){
 					System.out.println("Gare :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        carreauAConstruire = new Gare(Integer.parseInt(data.get(i)[3]), Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
+                                        carreauAConstruire = new Gare(Integer.parseInt(data.get(i)[3]), Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2],this);
                                         
                                         
                                         
@@ -288,7 +307,7 @@ public class Monopoly {
 				else if(caseType.compareTo("C") == 0){
 					System.out.println("Compagnie :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        carreauAConstruire = new Compagnie(Integer.parseInt(data.get(i)[3]), Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
+                                        carreauAConstruire = new Compagnie(Integer.parseInt(data.get(i)[3]), Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2],this);
                                         
                                         
                                         
@@ -300,7 +319,7 @@ public class Monopoly {
 				else if(caseType.compareTo("CT") == 0){
 					System.out.println("Case Tirage :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        carreauAConstruire = new CarreauTirage(Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
+                                        carreauAConstruire = new CarreauTirage(Integer.parseInt(data.get(i)[1]), data.get(i)[2],this);
                                         
                                        
                                         
@@ -312,7 +331,7 @@ public class Monopoly {
 				else if(caseType.compareTo("CA") == 0){
 					System.out.println("Case Argent :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        carreauAConstruire = new CarreauArgent(Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
+                                        carreauAConstruire = new CarreauArgent(Integer.parseInt(data.get(i)[3]),Integer.parseInt(data.get(i)[1]), data.get(i)[2],this);
                                         
                                        
                                         lescarreaux.put(Integer.parseInt(data.get(i)[1]),carreauAConstruire);
@@ -322,7 +341,7 @@ public class Monopoly {
 				else if(caseType.compareTo("CM") == 0){
 					System.out.println("Case Mouvement :\t" + data.get(i)[2] + "\t@ case " + data.get(i)[1]);
                                         
-                                        carreauAConstruire = new CarreauMouvement(Integer.parseInt(data.get(i)[1]), data.get(i)[2]);
+                                        carreauAConstruire = new CarreauMouvement(Integer.parseInt(data.get(i)[1]), data.get(i)[2],this);
                                         
                                         
                                         

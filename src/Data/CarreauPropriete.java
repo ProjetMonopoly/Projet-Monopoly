@@ -1,31 +1,36 @@
 package Data;
 
+import java.util.ArrayList;
+
 public abstract class CarreauPropriete extends Carreau {
 	private int loyerBase;
 	private int prixAchat;
 	private Joueur proprietaire;
 
-        public CarreauPropriete(int _loyerBase, int _prixAchat, int _numero, String _nomCarreau) {
-            super(_numero, _nomCarreau);
+        public CarreauPropriete(int _loyerBase, int _prixAchat, int _numero, String _nomCarreau, Monopoly monop) {
+            super(_numero, _nomCarreau, monop);
             this.loyerBase = _loyerBase;
             this.prixAchat = _prixAchat;
         }
 
         
-        	public int getPrixAchat() {
+        public int getPrixAchat() {
 		return this.prixAchat;
 	}
 
-	public void achatPropriete() {
-		throw new UnsupportedOperationException();
-	}
+        @Override
+        public abstract void action(Joueur j);
+        
+	public abstract void achatPropriete(Joueur j);
+        
+        
 
 	public void Infos(String aNomCarreau, String aNomG) {
 		throw new UnsupportedOperationException();
 	}
 
 	public String getNomC() {
-		throw new UnsupportedOperationException();
+		return super.getNomCarreau();
 	}
 
 	public void setProprio(Joueur aJ) {
@@ -33,17 +38,31 @@ public abstract class CarreauPropriete extends Carreau {
 	}
 
 	public boolean estProprio() {
-		throw new UnsupportedOperationException();
+		if (proprietaire == null){
+                    return false;
+                }else{
+                    return true;
+                }
 	}
 
-	public int getNbMaison() {
-		throw new UnsupportedOperationException();
-	}
+        
+        public Joueur getProprietaire() {
+            return proprietaire;
+        }
+	     
+        
+	public abstract void calculLoyer(Joueur j);
 
-	public void calculLoyer() {
-		throw new UnsupportedOperationException();
-	}
+        
+        public int getLoyerBase() {
+            return loyerBase;
+        }
+        
+        public Monopoly getMonopoly() {
+            return super.getMonopoly();
+        }
 
+        
 	public boolean ConstruireRep(Joueur aJ, CouleurPropriete aCouleur, CarreauPropriete aCp) {
 		throw new UnsupportedOperationException();
 	}

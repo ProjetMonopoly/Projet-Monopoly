@@ -9,15 +9,13 @@ public class ProprieteAConstruire extends CarreauPropriete {
         private Groupe groupePropriete;
         //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
 
-    public ProprieteAConstruire(ArrayList<Integer> lesloyerMaison, int loyerBase, int prixAchat, int numero, String nomCarreau) {
-        super(loyerBase, prixAchat, numero, nomCarreau);
+    public ProprieteAConstruire(ArrayList<Integer> lesloyerMaison, int loyerBase, int prixAchat, int numero, String nomCarreau, Monopoly monop) {
+        super(loyerBase, prixAchat, numero, nomCarreau,monop);
         this.lesloyerMaison = lesloyerMaison;
       
        
     }        
-        
-        
-	public String getConstruction() {
+    public String getConstruction() {
 		if (nbMaisons==5){
                     return "1 hotel";
                 }
@@ -60,8 +58,73 @@ public class ProprieteAConstruire extends CarreauPropriete {
         }
         
         public Joueur getPropriétaire(){
-            super.
+            return super.getProprietaire();
         }
+
+        @Override
+        public void calculLoyer(Joueur j) {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public void action(Joueur j) {
+            Joueur jProprio = getProprietaire();
+
+            if (jProprio == null){
+                this.achatPropriete(j);
+            }
+        }
+        
+    
+
+    public Monopoly getMonopoly() {
+            return super.getMonopoly();
+        }
+        
+    @Override
+    public void achatPropriete(Joueur j){
+		int prixA=getPrixAchat();  //pour avoir le prix du carreau
+                
+                Monopoly m = this.getMonopoly();  // Pour obtenir le monop
+              
+                
+                Joueur joueurActuel = j; //variable pour le joueur actuel
+                
+                
+                int cashJ = joueurActuel.getCash();
+                
+                
+                
+                if (cashJ > prixA){
+                    m.ProcedureAchat(joueurActuel, this);
+                    System.out.println("Le joueur " + joueurActuel.getNomJoueur() + " veut acheté " + this.getNomC() + " ?");
+                    
+                    Boolean confirmer = false;
+                    confirmer = m.AchatProp();
+                    
+                    if (confirmer == true){
+                        this.setProprio(joueurActuel);
+                        joueurActuel.setCash(cashJ-prixA);
+                        joueurActuel.addProprietes(this);
+                        
+                        
+                    }
+                                     
+                }
+    }
+    public int getNbMaisons() {
+        return nbMaisons;
+    }
+
+    public ArrayList<Integer> getLesloyerMaison() {
+        return lesloyerMaison;
+    }
+
+    public Groupe getGroupePropriete() {
+        return groupePropriete;
+    }
+    
+ 
         
         
 	

@@ -2,8 +2,8 @@ package Data;
 
 public class Interface {
 	public Monopoly _monopoly;
-
-	public void infoJoueur(int D, Carreau c, Joueur j) {
+        
+        public void infoJoueur(int D, Carreau c, Joueur j) {
                 System.out.println("Le joueur "+ j.getNomJoueur()+" :");
                 System.out.println("Total des dés : "+ D);
                 System.out.println("Le nom du carreau : "+ c.getNomCarreau());

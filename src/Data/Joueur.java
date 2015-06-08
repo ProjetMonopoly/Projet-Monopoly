@@ -1,6 +1,7 @@
 package Data;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Joueur {
 	private String nomJoueur;
@@ -14,7 +15,9 @@ public class Joueur {
         private int doubl = 0; //pour savoir les doubles
         private int des;//pour le resultat du lancé de des
         private int deplacement;// pour savoir ou est le joueur apres son lancé de dés
-
+        private int loyer; //pour avoir un variable loyer pour recevoirloyer, payerloyer
+       
+        
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
         this.monopoly = monopoly;
@@ -33,7 +36,7 @@ public class Joueur {
 		return this.nomJoueur;
 	}
         
-        public void setCarreau(Carreau c) {
+        public void setPositionCourante(Carreau c) {
 		positionCourante = c;
 	}
         
@@ -84,9 +87,7 @@ public class Joueur {
             return j;
 	}
 
-	public void CashRestant(int aL) {
-		throw new UnsupportedOperationException();
-	}
+	
         
         public void setNumeroDebut(){ //pour savoir le numero qu'il a obtenu pour savoir qui commence
             this.numerodebut=((int) (Math.random()*6) + 1);
@@ -110,21 +111,57 @@ public class Joueur {
 	//	throw new UnsupportedOperationException();
 	//}
 
-    public int getDes() {
-        return des;
-    }
+        public int resultatDés() {
+            Random rnd = new Random();
+            int i = rnd.nextInt(6)+1;
 
-    public void setDes(int des) {
-        this.des = des;
-    }
+           return i;
+        }
 
-    public int getDeplacement() {
-        return deplacement;
-    }
+        public int getDes() {
+            return des;
+        }
 
-    public void setDeplacement(int deplacement) {
-        this.deplacement = deplacement;
-    }
-    
+        public void setDes(int des) {
+            this.des = des;
+        }
+
+        public int getDeplacement() {
+            return deplacement;
+        }
+
+        public void setDeplacement(int deplacement) {
+            this.deplacement = deplacement;
+        }
+        
+        public void addCompanie(Compagnie c){
+            lescompagnies.add(c);
+        }
+        
+        public void addGare(Gare g){
+            lesgares.add(g);
+        }
+        
+        public void addProprietes(ProprieteAConstruire p){
+            lesproprietesAConstruire.add(p);
+        }
+
+        public int getLoyer() {
+            return loyer;
+        }
+
+        public void setLoyer(int loyer) {
+            this.loyer = loyer;
+        }
+
+       
+        
+        public void recevoirLoyer(int l){
+            cash= cash+l;
+        }
+        
+        public void PayerLoyer(int l){
+            cash= cash-l;
+        }
     
 }

@@ -5,13 +5,14 @@ public abstract class Carreau {
 	private String nomCarreau;
 	private Monopoly monopoly;
         
-        public Carreau(int _numero, String _nomCarreau) {
+        public Carreau(int _numero, String _nomCarreau, Monopoly monop) {
             this.numero = _numero;
             this.nomCarreau = _nomCarreau;
+            this.monopoly = monop;
         }
 
        
-        
+
         public String getNomCarreau() {
             return nomCarreau;
 	}
@@ -28,6 +29,21 @@ public abstract class Carreau {
 	public int getNumcarreauCourant() {
             return numero;
 	}
+
+
+        public Monopoly getMonopoly() {
+            return monopoly;
+        }
+
+        public void setMonopoly(Monopoly monopoly) {
+            this.monopoly = monopoly;
+        }
+
+    
+        public abstract void action(Joueur j);
+        
+
+        
         
         
 
