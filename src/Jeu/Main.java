@@ -20,7 +20,7 @@ public class Main {
     private static Monopoly monop;
 
     public static void main(String[] args) {
-        monop = new Monopoly("/users/info/etu-s2/chevillc/M2013-Java/projet-test/src/Data/src");
+        monop = new Monopoly("/users/info/etu-s2/riaudl/M2103-Java/Projet/Projet-Monopoly/src/Data/src");
 //        TreeSet<Joueur> ordre = new TreeSet<>();
 
         int compte = 0;

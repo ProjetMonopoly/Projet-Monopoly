@@ -10,7 +10,7 @@ public class Interface {
 	}
 
 	public void infoJoueur2(Joueur j, Carreau c ) {
-                System.out.println("Le joueur "+ j.getNomJoueur()+" est sur la case "+ c.getNomCarreau()+ "avec "+ j.getCash()+"€ comme argent.");
+                System.out.println("Le joueur "+ j.getNomJoueur()+" est sur la case "+ c.getNomCarreau()+ " avec "+ j.getCash()+"€ comme argent.");
 		System.out.println("Ces propriétés sont: " );       
 	}
 

@@ -123,6 +123,7 @@ public class Monopoly {
         }
         
         public void LancerDésEtAvancer(Joueur j){
+            inter= new Interface();
             boolean verif = true;
             
             System.out.println("");
