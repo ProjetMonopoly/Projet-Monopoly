@@ -19,7 +19,7 @@ public class Monopoly {
         private int numero; //pour le numero de la case en cour
 	private HashMap<Integer,Carreau> lescarreaux;
 	private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
-	public Interface _interface_9;
+	public Interface inter;
         private ArrayList<Groupe> groupe = new ArrayList<>();
         
         public HashMap<Integer,Carreau> getLesCarreaux() {
@@ -164,13 +164,7 @@ public class Monopoly {
                 Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
                 j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
 
-                String nomCarreau;
-                nomCarreau=j.getCarreau().getNomCarreau();  //Nom carreau 
-
-                String nomJoueur;
-                nomJoueur= j.getNomJoueur();
-
-                System.out.println("Le joueur " + nomJoueur + " à fait un " + des + " ce qui l'amene sur la case " + nomCarreau);
+                inter.infoJoueur(des, carreauCourant, j);
 
                 //premiere étape ok 
 
@@ -181,29 +175,15 @@ public class Monopoly {
                 
                 for (Joueur i: collectionJoueur){
                     int cash;
-                    cash=i.getCash(); // l'argent que possede le joueur
-
-                    nomJoueur = i.getNomJoueur();//nom joueur
-
-                    int numero;
-                    numero = i.getNumCarreau();
-
-                    System.out.println("Le joueur " + nomJoueur + " à " + cash + "€ et est sur la case numero " +numero);
+                    inter.infoJoueur2(j, carreauCourant);
 
                     ArrayList<ProprieteAConstruire> collectProprio = i.getLesPropio();
                     
 
                     for ( ProprieteAConstruire p : collectProprio){
-                        int construction;
-                        construction = p.getConstruction();
-
-                        CouleurPropriete couleur;
-                        couleur = p.getcouleurProp();
-
-                        String NomCase;
-                        NomCase = p.getNomMaison();
-
-                        System.out.println("Ce joueur possede la case " + NomCase + " de couleur " + couleur.name() + " avec un niveau de construction egal à " + construction);
+                        Groupe groupe;
+                        groupe = p.getGroupe();
+                        inter.infoPropriete(p, groupe);
                     }
                 }
 
