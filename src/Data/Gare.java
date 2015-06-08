@@ -37,11 +37,11 @@ public class Gare extends CarreauPropriete {
     
     @Override
     public void action(Joueur j) {
-        Joueur jProprio = getProprietaire();
+        Joueur jProprio = this.getProprietaire();
         
         if (jProprio == null){
             this.achatPropriete(j);
-        }else if (jProprio != j){
+        }else{
             this.calculLoyer(jProprio);
             jProprio.recevoirLoyer(jProprio.getLoyer());
             j.PayerLoyer(jProprio.getLoyer());
@@ -61,16 +61,17 @@ public class Gare extends CarreauPropriete {
                     
                 Monopoly m = this.getMonopoly();  // Pour obtenir le monop
                 
-                m.ProcedureAchat(j,this);
+                m.ProcedureAchat(j,this);  //envoi un message
                     
                 boolean confirmer = false;
                 confirmer = m.AchatProp();
                     
                 if (confirmer == true){
-                    this.setProprio(j);
+                    super.setProprio(j);
                     j.setCash(cashJ-prixA);
                     j.addGare(this); 
                     
+                    System.out.println("Tu as acheté la gare");
                 }
                                      
                 }else{

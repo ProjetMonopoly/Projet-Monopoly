@@ -20,11 +20,12 @@ public class Main {
     private static Monopoly monop;
 
     public static void main(String[] args) {
-        monop = new Monopoly("/users/info/etu-s2/riaudl/M2103-Java/Projet/Projet-Monopoly/src/Data/src");
+        monop = new Monopoly("/users/info/etu-s2/chevillc/M2013-Java/Projet-Monopoly/src/Data/src");
 //        TreeSet<Joueur> ordre = new TreeSet<>();
 
         int compte = 0;
-        HashMap<Integer, Carreau> lesCarreaux = monop.getLesCarreaux();
+        HashMap<Integer, Carreau> lesCarreaux = new HashMap<>();
+        lesCarreaux = monop.getLesCarreaux();
 
         for (Carreau c : lesCarreaux.values()) {
             compte = compte + 1;
@@ -39,18 +40,28 @@ public class Main {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Combien de joueur: ");
         nbJoueur = Integer.parseInt(sc1.nextLine());
+        
 
+        System.out.println("Entrer le nom du joueur " + 1 + " :");
+        Joueur j1 = new Joueur(sc1.nextLine(),monop,carreauInit);
+        int des = j1.resultatDés();
+        monop.setLesJoueurs(j1);
+        monop.JouerUnCoup(j1);
+        
+        
         for (int i = 1; i <= nbJoueur; i++) {
             System.out.println("Entrer le nom du joueur " + i + " :");
             Joueur j = new Joueur(sc1.nextLine(), monop, carreauInit);
-            int des = j.resultatDés();
+            int dés = j.resultatDés();
             monop.setLesJoueurs(j);
 
         }
+        
+       
+        
 
         for (Joueur j : monop.getLesJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
-            System.out.println(j.getNomJoueur());
-            System.out.println(j.getCarreau().getNomCarreau());
+            
 
             System.out.println("");
 
