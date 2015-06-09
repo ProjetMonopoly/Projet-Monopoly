@@ -49,9 +49,6 @@ public class Monopoly {
 //            }else {return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1));}
     }
 
-    public void procedureAchat(Joueur aJ, CarreauPropriete aCp) {
-        System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC());
-    }
 
     public boolean AchatProp() {
 
@@ -95,10 +92,6 @@ public class Monopoly {
 
     public void choixTerrain(Joueur aJ, Groupe aGr) {
         throw new UnsupportedOperationException();
-    }
-
-    public Carreau getCarreau(int numero) {
-        return lescarreaux.get(numero); //returne le carreau avec un numero
     }
 
     public void CréerGroupe() {

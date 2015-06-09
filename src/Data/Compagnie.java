@@ -39,7 +39,7 @@ public class Compagnie extends CarreauPropriete {
         if (jProprio == null) {
             this.achatPropriete(j);
         } else {
-            this.calculLoyer(jProprio);
+            this.calculLoyer(j); //du joueur pour avoir le dés
 
             int loyerPro = jProprio.getLoyer();
 
