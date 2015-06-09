@@ -79,6 +79,7 @@ public class Gare extends CarreauPropriete {
                     j.addGare(this); 
                     
                     System.out.println("Tu as acheté la gare");
+                    System.out.println("");
                 }
                                      
                 }else{

@@ -45,8 +45,8 @@ public class Interface {
         throw new UnsupportedOperationException();
     }
 
-    public void InfosLoyerCompagnie(Joueur aJProprio, int aL, int aCash) {
-        throw new UnsupportedOperationException();
+    public void InfosLoyerCompagnie(Joueur jproprio, int l) {
+        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l );
     }
 
     public void InfosLoyerPAC(Joueur aJProprio, int aL, int aCash) {

@@ -71,6 +71,10 @@ public class Monopoly {
         inter.InfosLoyerGare(jproprio, l);
     }
     
+    public void InfosLoyerCompagnie(Joueur jproprio, int l) {
+        inter.InfosLoyerCompagnie(jproprio, l);
+    }
+    
     public ArrayList<Joueur> getLesJoueurs() {
         return lesjoueurs;
     }
@@ -186,11 +190,17 @@ public class Monopoly {
             c.action(j);  //gare
 
         }else if ((c.getNumcarreauCourant() == 13) || (c.getNumcarreauCourant() == 29)){
-            //companie
+           
+            c.action(j);//companie
+            
         }else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5)||(c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21)|| (c.getNumcarreauCourant() == 39)){
             //case argent
-        }else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5)||(c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21)|| (c.getNumcarreauCourant() == 39)){
+        }else if ((c.getNumcarreauCourant() == 3) || (c.getNumcarreauCourant() == 8)||(c.getNumcarreauCourant() == 18) || (c.getNumcarreauCourant() == 23)|| (c.getNumcarreauCourant() == 34)|| (c.getNumcarreauCourant() == 37)){
             //case tirage
+        }else if ((c.getNumcarreauCourant() == 31)){
+            //case mouvement
+        }else {
+            //case propriete
         }
             
 
