@@ -86,12 +86,14 @@ public class Monopoly {
     }
 
    
-    public void ProcedureConstruire(Joueur J, ArrayList<ProprieteAConstruire> possibleConstruction) {
-        inter.InfoConstruire(J, possibleConstruction);
+    public void ProcedureConstruire(Joueur j, ArrayList<ProprieteAConstruire> possibleConstruction) {
+        inter.InfoConstruire(j, possibleConstruction);
     }
 
-    public boolean getReponse(Joueur aJ, ProprieteAConstruire aP) {
-        throw new UnsupportedOperationException();
+    public boolean getReponse(Joueur j, ProprieteAConstruire pac) {
+        pac.debutConstruction(j);
+        return true;
+        
     }
     
      public int getNbMaisons() {

@@ -4,8 +4,8 @@ import static Data.CouleurPropriete.*;
 import java.util.ArrayList;
 
 public class ProprieteAConstruire extends CarreauPropriete {
-	private final int nbMaisons = 0;
-	private ArrayList<Integer> lesloyerMaison;
+	private int nbMaisons = 0;
+        private ArrayList<Integer> lesloyerMaison;
         private Groupe groupePropriete;
         //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
 
@@ -41,12 +41,18 @@ public class ProprieteAConstruire extends CarreauPropriete {
 		//regarder les  couleurs;
 	}
 
-	public void construire() {
-		throw new UnsupportedOperationException();
-	}
 
-	public void debutConstruction(Joueur aJ, ProprieteAConstruire aP) {
-		throw new UnsupportedOperationException();
+	public void debutConstruction(Joueur j) {
+            if(this.getNbMaisons()<=4){
+            this.setNbMaisons(nbMaisons+1);
+            j.setCash(j.getCash()-this.getGroupe().getPrixAchatMaison());
+            super.getMonopoly().setNbMaisons(super.getMonopoly().getNbMaisons()-1);
+            }
+            else {
+                this.setNbMaisons(nbMaisons+1);
+            j.setCash(j.getCash()-this.getGroupe().getPrixAchatMaison());
+            super.getMonopoly().setNbHotels(super.getMonopoly().getNbHotels()-1);}
+            super.getMonopoly().setNbMaisons(super.getMonopoly().getNbMaisons()+4);
 	}
 
 	public Groupe getGroupe() {
@@ -115,6 +121,9 @@ public class ProprieteAConstruire extends CarreauPropriete {
     public int getNbMaisons() {
         return nbMaisons;
     }
+    public void setNbMaisons(int nbMaisons) {
+        this.nbMaisons = nbMaisons;
+    }
 
     public ArrayList<Integer> getLesloyerMaison() {
         return lesloyerMaison;
@@ -133,7 +142,13 @@ public class ProprieteAConstruire extends CarreauPropriete {
                 gr=this.getGroupe();
                 possibleConstruction= VerifConstruction(j,gr);
                 
-                super.getMonopoly().ProcedureConstruire(j,possibleConstruction);
+                while(!possibleConstruction.isEmpty()){
+                    super.getMonopoly().ProcedureConstruire(j,possibleConstruction);
+                    
+                    possibleConstruction= VerifConstruction(j,gr);
+                }
+                super.getMonopoly().getInter().InfoPasConstruire(j);
+                
                     
 	}
         public ArrayList<ProprieteAConstruire> VerifConstruction(Joueur j, Groupe gr){

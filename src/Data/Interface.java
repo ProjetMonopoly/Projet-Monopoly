@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Interface {
 
-    public Monopoly _monopoly;
+    public Monopoly monopoly;
 
     public void infoJoueur(int D, Carreau c, Joueur j) {
         System.out.println("Le joueur : " + j.getNomJoueur());
@@ -74,11 +74,35 @@ public class Interface {
     }
 
     public void InfoConstruire(Joueur j, ArrayList<ProprieteAConstruire> PossibleConstruction) {
+        int i=1;
         System.out.println("Joueur : " + j.getNomJoueur());
+        System.out.println("Voici vos possibles constructions: ");
         for (ProprieteAConstruire pac : PossibleConstruction) {
-            System.out.println("Propriété : " + pac.getNomCarreau());
-
+            System.out.println("Propriété "+i+ ": " + pac.getNomCarreau());
+            
+            if(pac.getNbMaisons()<=4){
+                System.out.println("Vous pouvez contruire une maison.");
+            } else {System.out.println("Vous pouvez contruire un hotel.");}
+                
+            i++;
         }
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Entrez le numéro de la propiété à construire: ");
+        String res = sc.nextLine();
+            if (res=="1"){
+                monopoly.getReponse(j,PossibleConstruction.get(0));
+            }
+            else if (res=="2"){
+                monopoly.getReponse(j,PossibleConstruction.get(1));
+            }
+            else {
+                monopoly.getReponse(j,PossibleConstruction.get(2));
+            }
+    }
+     public void InfoPasConstruire(Joueur j) {
+        System.out.println("Joueur : " + j.getNomJoueur());
+        System.out.println("Vous ne pouvez pas construire! ");
+        
     }
 
     public void InfosLoyer(Joueur jProprio, int L) {
