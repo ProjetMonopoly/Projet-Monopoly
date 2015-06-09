@@ -26,10 +26,6 @@ public class Compagnie extends CarreauPropriete {
 
         jproprio.setLoyer(l); // pour avoir le prix du loyer
 
-        Monopoly m = super.getMonopoly();
-
-        m.InfosLoyer(jproprio, l);
-
     }
 
     @Override
@@ -38,9 +34,9 @@ public class Compagnie extends CarreauPropriete {
 
         if (jProprio == null) {
             this.achatPropriete(j);
-        } else if (jProprio == j)
-        {System.out.println("Vous etes les propriétaires, vous n'avez rien à payer");
-        }else {
+        } else if (jProprio == j) {
+            System.out.println("Vous etes les propriétaires, vous n'avez rien à payer");
+        } else {
             this.calculLoyer(j); //du joueur pour avoir le dés
 
             int loyerPro = jProprio.getLoyer();
@@ -49,8 +45,10 @@ public class Compagnie extends CarreauPropriete {
             j.PayerLoyer(loyerPro);
 
             Monopoly M = getMonopoly();
-            
-            M.infoJoueur3(j);
+
+            M.InfosLoyerPro(jProprio, loyerPro);
+            M.InfosLoyerJoueur(j, loyerPro);
+
         }
     }
 

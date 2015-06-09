@@ -41,29 +41,30 @@ public class Main {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Combien de joueur: ");
         nbJoueur = Integer.parseInt(sc1.nextLine());
-        
 
 //        System.out.println("Entrer le nom du joueur " + 1 + " :");
 //        Joueur j1 = new Joueur(sc1.nextLine(),monop,carreauInit);
 //        int des = j1.resultatDés();
 //        monop.setLesJoueurs(j1);
 //        monop.JouerUnCoup(j1);
-        
-        
-        
         for (int i = 1; i <= nbJoueur; i++) {
             System.out.println("Entrer le nom du joueur " + i + " :");
-            Joueur j = new Joueur(sc1.nextLine(), monop, carreauInit) {};
+            Joueur j = new Joueur(sc1.nextLine(), monop, carreauInit) {
+            };
             j.setDes(j.resultatDés());
             J.add(j);
             monop.setLesJoueurs(j);
 
         }
-        
-        
-        
+
         for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
-            
+
+            System.out.println("");
+
+            monop.JouerUnCoup(j);
+        }
+
+        for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
 
             System.out.println("");
 
