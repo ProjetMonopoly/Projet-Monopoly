@@ -13,10 +13,15 @@ package Data;
  */
 public class CartePrison extends Carte {
 
-    public CartePrison(int numero, Monopoly monop) {
-        super(numero, monop);
+    public CartePrison(String des, Monopoly monop) {
+        super(des, monop);
     }
     public void ActionCartePriso() {
         
+    }
+
+    @Override
+    public void action(Joueur j) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
