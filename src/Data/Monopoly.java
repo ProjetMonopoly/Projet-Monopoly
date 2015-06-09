@@ -69,7 +69,7 @@ public class Monopoly {
     }
     
 
-    public ArrayList<Joueur> getLesJoueurs() {
+    public ArrayList<Joueur> getJoueurs() {
         return lesjoueurs;
     }
 
