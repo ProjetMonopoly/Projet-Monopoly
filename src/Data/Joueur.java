@@ -84,8 +84,8 @@ public class Joueur {
 
     public int getNbCompagnies() {
         int j = 0;
-        for (int i = 0; i <= lescompagnies.size(); i++) {
-            j = i + 1;
+        for (int i = 1; i <= lescompagnies.size(); i++) {
+            j = j + 1;
         }
         return j;
     }

@@ -150,6 +150,7 @@ public class Monopoly {
 //        } else if (verif == true) {
             int des = 0;
             des = des1 + des2;
+            j.setDes(des);
             j.ModifPosition(des);
 
             Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
