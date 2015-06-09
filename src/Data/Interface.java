@@ -28,6 +28,10 @@ public class Interface {
             }
         }
     }
+    
+    public void infoJoueur3(Joueur j){
+        System.out.println(j.getNomJoueur() + " ne possede plus que " + j.getCash() +'€');
+    }
 
     public void infoPropriete(ProprieteAConstruire p, Groupe groupe) {
         System.out.println("La propriété " + p.getNomCarreau() + " a pour groupe " + groupe.getCouleur() + "et possède " + p.getConstruction());

@@ -79,8 +79,16 @@ public class Joueur {
         return lesproprietesAConstruire;
     }
 
-    public int getNbPropriCouleur(CouleurPropriete aCoul) {
-        throw new UnsupportedOperationException();
+    public int getNbPropriCouleur(CouleurPropriete Coul) {
+        int nbc = 0; 
+        
+        for (ProprieteAConstruire p : lesproprietesAConstruire){
+            if (p.getGroupe().getCouleur() == Coul){
+                nbc = nbc +1;
+            }
+        }
+        
+        return nbc;
     }
 
     public int getNbCompagnies() {
@@ -161,7 +169,7 @@ public class Joueur {
         cash = cash - l;
     }
     
-
+    
   
     
     

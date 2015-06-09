@@ -70,6 +70,10 @@ public class Monopoly {
         inter.InfosLoyer(jproprio, l);
     }
     
+     public void infoJoueur3(Joueur j){
+         inter.infoJoueur3(j);
+     }
+    
 
     public ArrayList<Joueur> getJoueurs() {
         return lesjoueurs;
@@ -228,7 +232,7 @@ public class Monopoly {
         }else if ((c.getNumcarreauCourant() == 31)){
             //case mouvement
         }else {
-            //case propriete
+            c.action(j); //case propriete
         }
             
 

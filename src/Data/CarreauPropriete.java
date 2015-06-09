@@ -69,4 +69,6 @@ public abstract class CarreauPropriete extends Carreau {
         
         
         
+        
+        
 }

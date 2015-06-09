@@ -43,6 +43,8 @@ public class Gare extends CarreauPropriete {
         
         if (jProprio == null){
             this.achatPropriete(j);
+        }else if (jProprio == j)
+        {System.out.println("Vous etes les propriétaires, vous n'avez rien à payer");
         }else{
             this.calculLoyer(jProprio);
             
@@ -52,7 +54,8 @@ public class Gare extends CarreauPropriete {
             j.PayerLoyer(loyerPro);
             
             Monopoly M = getMonopoly();
-            M.InfosLoyer(jProprio, jProprio.getLoyer());
+           
+            M.infoJoueur3(j);
             
         }
     }
