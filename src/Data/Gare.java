@@ -28,7 +28,7 @@ public class Gare extends CarreauPropriete {
         
         Monopoly m = super.getMonopoly();
         
-        m.InfosLoyerGare(jproprio, l);
+        m.InfosLoyer(jproprio, l);
         
         
         
@@ -53,7 +53,7 @@ public class Gare extends CarreauPropriete {
             j.PayerLoyer(loyerPro);
             
             Monopoly M = getMonopoly();
-            M.InfosLoyerGare(jProprio, jProprio.getLoyer());
+            M.InfosLoyer(jProprio, jProprio.getLoyer());
             
         }
     }

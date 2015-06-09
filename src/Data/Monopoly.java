@@ -35,7 +35,7 @@ public class Monopoly {
     public int resultatDés(Joueur j) {
 //            Random rnd = new Random();
 //            int i = rnd.nextInt(6)+1;
-        int i = 2;
+        int i = 6;
         return i;
 //            int des1 = ((int) (Math.random()*6) + 1);
 //            int des2 = ((int) (Math.random()*6) + 1);
@@ -67,14 +67,11 @@ public class Monopoly {
         }
     }
 
-    public void InfosLoyerGare(Joueur jproprio, int l) {
-        inter.InfosLoyerGare(jproprio, l);
+    public void InfosLoyer(Joueur jproprio, int l) {
+        inter.InfosLoyer(jproprio, l);
     }
     
-    public void InfosLoyerCompagnie(Joueur jproprio, int l) {
-        inter.InfosLoyerCompagnie(jproprio, l);
-    }
-    
+
     public ArrayList<Joueur> getLesJoueurs() {
         return lesjoueurs;
     }

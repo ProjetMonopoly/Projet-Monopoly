@@ -33,7 +33,7 @@ public class Interface {
         System.out.println("La propriété " + p.getNomCarreau() + " a pour groupe " + groupe.getCouleur() + "et possède " + p.getConstruction());
     }
 
-    public void InfosLoyerGare(Joueur jproprio, int l) {
+    public void InfosLoyer(Joueur jproprio, int l) {
         System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l );
     }
 
@@ -45,9 +45,6 @@ public class Interface {
         throw new UnsupportedOperationException();
     }
 
-    public void InfosLoyerCompagnie(Joueur jproprio, int l) {
-        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l );
-    }
 
     public void InfosLoyerPAC(Joueur aJProprio, int aL, int aCash) {
         throw new UnsupportedOperationException();
