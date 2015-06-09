@@ -18,17 +18,16 @@ public class Gare extends CarreauPropriete {
     @Override
     public void calculLoyer(Joueur j) { //rien avoir uml
         
-        Joueur jproprio = super.getProprietaire();
         
-        int nbg = jproprio.getNbGares();// pour avoir le nombre de gare du joueur proprietaire
+        int nbg = j.getNbGares();// pour avoir le nombre de gare du joueur proprietaire
         
         int l = this.calculLoyerGare(nbg);
         
-        jproprio.setLoyer(l); // pour avoir le prix du loyer
+        j.setLoyer(l); // pour avoir le prix du loyer
         
         Monopoly m = super.getMonopoly();
         
-        m.InfosLoyer(jproprio, l);
+        m.InfosLoyer(j, l);
         
         
         

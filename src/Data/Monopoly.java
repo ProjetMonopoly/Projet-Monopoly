@@ -131,30 +131,30 @@ public class Monopoly {
         int des1 = 0;
         int des2 = 0;
 
-        des1 = resultatDés(j) + 1;
+        des1 = resultatDés(j);
         des2 = resultatDés(j);
 
         j.setDouble(0);
-        if (des2 == des1) {
-
-            while (verif == true) {
-                des1 = resultatDés(j);
-                des2 = resultatDés(j);
-
-                j.setDouble(j.getDouble() + 1);
-
-                if (j.getDouble() == 3) {
-                    j.setDouble(0);
-                    Carreau carreauPrison = lescarreaux.get(11);
-                    j.setPositionCourante(carreauPrison);
-
-                    System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
-
-                    verif = false;
-                }
-
-            }
-        } else if (verif == true) {
+//        if (des2 == des1) {
+//
+//            while (verif == true) {
+//                des1 = resultatDés(j);
+//                des2 = resultatDés(j);
+//
+//                j.setDouble(j.getDouble() + 1);
+//
+//                if (j.getDouble() == 3) {
+//                    j.setDouble(0);
+//                    Carreau carreauPrison = lescarreaux.get(11);
+//                    j.setPositionCourante(carreauPrison);
+//
+//                    System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
+//
+//                    verif = false;
+//                }
+//
+//            }
+//        } else if (verif == true) {
             int des = 0;
             des = des1 + des2;
             j.ModifPosition(des);
@@ -174,7 +174,7 @@ public class Monopoly {
                 System.out.println("");
             //}
 
-        }
+        //}
     }
 
     public void JouerUnCoup(Joueur j) {
