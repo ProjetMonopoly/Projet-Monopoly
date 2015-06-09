@@ -1,5 +1,8 @@
 package Data;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Interface {
 
     public Monopoly _monopoly;
@@ -29,22 +32,9 @@ public class Interface {
         }
     }
 
-    public void infoPropriete(ProprieteAConstruire p, Groupe groupe) {
-        System.out.println("La propriété " + p.getNomCarreau() + " a pour groupe " + groupe.getCouleur() + "et possède " + p.getConstruction());
-    }
-
-    public void InfosLoyer(Joueur jproprio, int l) {
-        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l );
-    }
-
     public void InfoAchat(Joueur aJ, CarreauPropriete aCp) {
         throw new UnsupportedOperationException();
     }
-
-    public void InfoConstruire(Joueur aJ, Groupe aPossibleConstruction) {
-        throw new UnsupportedOperationException();
-    }
-
 
     public void InfosLoyerPAC(Joueur aJProprio, int aL, int aCash) {
         throw new UnsupportedOperationException();
@@ -53,4 +43,46 @@ public class Interface {
     public void InfoTerrain(Joueur j, Groupe gr) {
 
     }
+     public void infoPropriete(ProprieteAConstruire p, Groupe groupe) {
+        System.out.println("La propriété " + p.getNomCarreau() + " a pour groupe " + groupe.getCouleur() + "et possède " + p.getConstruction());
+    }
+
+    public boolean InfoAchatPAC(Joueur j, ProprieteAConstruire p) {
+        System.out.println("La propriété à acheter est " + p.getNomCarreau() + ", son groupe est " + p.getGroupe().getCouleur() + ", et le prix est de " + p.getPrixAchat());
+        System.out.println();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Voulez vous acheter? (oui/non)");
+        String str = sc.nextLine();
+
+        if (str == "oui") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    public boolean InfoAchatAutre(Joueur j, CarreauPropriete cp) {
+        System.out.println("La propriété à acheter est " + cp.getNomCarreau() + ", et le prix est de " + cp.getPrixAchat());
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Voulez vous acheter? (oui/non)");
+        String str = sc.nextLine();
+
+        if (str == "oui") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public void InfoConstruire(Joueur j, ArrayList<ProprieteAConstruire> PossibleConstruction) {
+        System.out.println("Joueur : " + j.getNomJoueur());
+        for (ProprieteAConstruire pac : PossibleConstruction) {
+            System.out.println("Propriété : " + pac.getNomCarreau());
+
+        }
+    }
+
+    public void InfosLoyer(Joueur jProprio, int L) {
+        System.out.println("Le propriétaire " + jProprio.getNomJoueur() + " a payé un loyer de " + L + ". Son cash est de " + jProprio.getCash());
+    }
 }
+

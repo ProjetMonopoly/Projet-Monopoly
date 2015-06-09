@@ -160,4 +160,28 @@ public class Joueur {
         cash = cash - l;
     }
 
+    public boolean PossedeGroupe(Groupe gr){
+        
+        ArrayList<ProprieteAConstruire> propriGroupe;
+        ArrayList<ProprieteAConstruire> propriJoueur;
+        boolean estPresent;
+        
+        propriGroupe= gr.getLesproprietes();
+        propriJoueur= this.getLesPropio();
+        
+        estPresent=false;
+        
+        for(ProprieteAConstruire pacGr: propriGroupe){
+            for (ProprieteAConstruire pacJ: propriJoueur){
+                if (pacGr.equals(pacJ)){
+                    estPresent=true; break;
+                }
+                estPresent=false;
+            }
+            if (estPresent=false){
+                break;
+            }
+        }
+        return estPresent;
+    }
 }

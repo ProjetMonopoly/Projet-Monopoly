@@ -13,8 +13,10 @@ import java.util.Scanner;
 
 public class Monopoly {
 
-    private int _nbMaisons = 32;
-    private int _nbHotels = 12;
+    private int nbMaisons = 32;
+
+   
+    private int nbHotels = 12;
 //        private int des;//pour le resultat du lancé de des
     private int numero; //pour le numero de la case en cour
     private HashMap<Integer, Carreau> lescarreaux;
@@ -82,12 +84,28 @@ public class Monopoly {
     }
 
    
-    public void ProcedureConstruire(Joueur aJ, Groupe aGr) {
-        throw new UnsupportedOperationException();
+    public void ProcedureConstruire(Joueur J, ArrayList<ProprieteAConstruire> possibleConstruction) {
+        inter.InfoConstruire(J, possibleConstruction);
     }
 
     public boolean getReponse(Joueur aJ, ProprieteAConstruire aP) {
         throw new UnsupportedOperationException();
+    }
+    
+     public int getNbMaisons() {
+        return nbMaisons;
+    }
+
+    public void setNbMaisons(int nbMaisons) {
+        this.nbMaisons = nbMaisons;
+    }
+
+    public int getNbHotels() {
+        return nbHotels;
+    }
+
+    public void setNbHotels(int nbHotels) {
+        this.nbHotels = nbHotels;
     }
 
     public void choixTerrain(Joueur aJ, Groupe aGr) {

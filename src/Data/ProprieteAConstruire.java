@@ -124,7 +124,115 @@ public class ProprieteAConstruire extends CarreauPropriete {
         return groupePropriete;
     }
     
- 
+    public void construire(Joueur j) {
+		Groupe gr;
+                int c;
+                
+                ArrayList<ProprieteAConstruire> possibleConstruction;
+                
+                gr=this.getGroupe();
+                possibleConstruction= VerifConstruction(j,gr);
+                
+                super.getMonopoly().ProcedureConstruire(j,possibleConstruction);
+                    
+	}
+        public ArrayList<ProprieteAConstruire> VerifConstruction(Joueur j, Groupe gr){
+                int prixMaison;
+                int NbMaisons;
+                int c;
+                boolean possedeGr;
+                
+                NbMaisons= super.getMonopoly().getNbMaisons();
+                possedeGr= j.PossedeGroupe(gr);
+                c= j.getCash();
+                prixMaison= gr.getPrixAchatMaison();
+                ArrayList<ProprieteAConstruire> terrain= new ArrayList();
+                
+                if(NbMaisons!=0 && possedeGr && c>=prixMaison){
+                    terrain= TerrainConstructible(gr);
+                }
+                return terrain;
+        }
+        
+        public ArrayList<ProprieteAConstruire> TerrainConstructible (Groupe gr){
+            ArrayList<ProprieteAConstruire> terrainGr= new ArrayList();
+            ArrayList<ProprieteAConstruire> terrainConstruc= new ArrayList();
+            ProprieteAConstruire pac1;
+            ProprieteAConstruire pac2;
+            ProprieteAConstruire pac3;
+            
+            terrainGr=gr.getLesproprietes();
+            
+            pac1=terrainGr.get(0);
+            pac2=terrainGr.get(1);
+            int n1=pac1.getNbMaisons();
+            int n2=pac2.getNbMaisons();
+            
+            
+            if(terrainGr.get(2)!=null){
+                pac3=terrainGr.get(2);
+                int n3=pac3.getNbMaisons();
+                
+                if(n1==n2 && n2==n3 && n1<5 ){
+                    terrainConstruc.add(pac1);
+                    terrainConstruc.add(pac2);
+                    terrainConstruc.add(pac3);
+                }
+                
+                if(n1==n2-1 && n1==n3 && n1<5){
+                    terrainConstruc.add(pac1);
+                    terrainConstruc.add(pac3);
+                }
+                if(n1==n2 +1 && n1==n3 && n1<=5){
+                    terrainConstruc.add(pac2);
+                }
+                if(n1-1==n2 && n2==n3 && n2<5){
+                    terrainConstruc.add(pac2);
+                    terrainConstruc.add(pac3);
+                }
+                if(n1+1==n2 && n2==n3 && n2<=5){
+                    terrainConstruc.add(pac1);
+                }
+                if(n1==n3-1 && n1==n2 && n1<5){
+                    terrainConstruc.add(pac1);
+                    terrainConstruc.add(pac2);
+                }
+                if(n1==n3 +1 && n1==n2 && n1<=5){
+                    terrainConstruc.add(pac3);
+                }
+                
+                
+                if(n1==n2 && n2==n3 && n1==5 ){
+                    return null;
+                }
+                
+                return terrainConstruc;
+              
+            
+            }
+            
+            
+            if(n1==n2 && n1<5){
+                terrainConstruc.add(pac1);
+                terrainConstruc.add(pac2);
+            }
+            if(n1==n2-1 && n1<5){
+                terrainConstruc.add(pac1);
+            }
+            if(n1==n2 +1 &&n1<=5){
+                terrainConstruc.add(pac2);
+            }
+            if(n1-1==n2 && n1<=5){
+                terrainConstruc.add(pac2);
+            }
+            if(n1+1==n2 && n1<5){
+                terrainConstruc.add(pac1);
+            }
+            if(n1==n2 && n1==5){
+                return null;
+            }
+            return terrainConstruc;
+        }
         
         
 	
