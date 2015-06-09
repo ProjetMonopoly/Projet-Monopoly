@@ -183,9 +183,16 @@ public class Monopoly {
 
         if ((c.getNumcarreauCourant() == 6) || (c.getNumcarreauCourant() == 16) || (c.getNumcarreauCourant() == 26) || (c.getNumcarreauCourant() == 36)) {
 
-            c.action(j);
+            c.action(j);  //gare
 
+        }else if ((c.getNumcarreauCourant() == 13) || (c.getNumcarreauCourant() == 29)){
+            //companie
+        }else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5)||(c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21)|| (c.getNumcarreauCourant() == 39)){
+            //case argent
+        }else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5)||(c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21)|| (c.getNumcarreauCourant() == 39)){
+            //case tirage
         }
+            
 
     }
 

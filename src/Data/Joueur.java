@@ -16,7 +16,7 @@ public class Joueur {
     private int doubl = 0; //pour savoir les doubles
     private int des;//pour le resultat du lancé de des
     private int deplacement;// pour savoir ou est le joueur apres son lancé de dés
-    private int loyer; //pour avoir un variable loyer pour recevoirloyer, payerloyer
+    private int loyer = 0; //pour avoir un variable loyer pour recevoirloyer, payerloyer
 
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -55,8 +55,8 @@ public class Joueur {
 
     public int getNbGares() {
         int j = 0;
-        for (int i = 0; i <= lesgares.size(); i++) {
-            j = i + 1;
+        for (int i = 1; i <= lesgares.size(); i++) {
+            j = j + 1;
         }
         return j;
 

@@ -46,10 +46,14 @@ public class Gare extends CarreauPropriete {
             this.achatPropriete(j);
         }else{
             this.calculLoyer(jProprio);
-            jProprio.recevoirLoyer(jProprio.getLoyer());
-            j.PayerLoyer(jProprio.getLoyer());
+            
+            int loyerPro = jProprio.getLoyer();
+            
+            jProprio.recevoirLoyer(loyerPro);
+            j.PayerLoyer(loyerPro);
+            
             Monopoly M = getMonopoly();
-            M.getInter().InfosLoyerGare(jProprio, jProprio.getLoyer());
+            M.InfosLoyerGare(jProprio, jProprio.getLoyer());
             
         }
     }
