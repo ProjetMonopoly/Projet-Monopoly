@@ -13,8 +13,8 @@ package Data;
 public class CartePArgent extends Carte {
     private int montant;
 
-    public CartePArgent(int montant, int numero, Monopoly monop) {
-        super(numero, monop);
+    public CartePArgent(int montant, String des, Monopoly monop) {
+        super(des, monop);
         this.montant = montant;
     }
     public void PayerReparationMaison () {
@@ -30,6 +30,11 @@ public class CartePArgent extends Carte {
 
     public int getMontant() {
         return montant;
+    }
+
+    @Override
+    public void action(Joueur j) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

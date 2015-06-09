@@ -12,8 +12,13 @@ package Data;
  */
 public class CarteDeplace extends Carte {
 
-    public CarteDeplace(int numero, Monopoly monop) {
-        super(numero, monop);
+    public CarteDeplace(String des, Monopoly monop) {
+        super(des, monop);
+    }
+
+    @Override
+    public void action(Joueur j) {
+        
     }
     
 }

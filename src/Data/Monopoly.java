@@ -22,6 +22,8 @@ public class Monopoly {
     private HashMap<Integer, Carreau> lescarreaux;
     private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
     public Interface inter;
+    private HashMap<Integer,Carte> Chance;
+    private HashMap<Integer,Carte> Communauté;
     private ArrayList<Groupe> groupe = new ArrayList<>();
 
     public HashMap<Integer, Carreau> getLesCarreaux() {
@@ -71,7 +73,7 @@ public class Monopoly {
     }
     
 
-    public ArrayList<Joueur> getLesJoueurs() {
+    public ArrayList<Joueur> getJoueurs() {
         return lesjoueurs;
     }
 
@@ -133,7 +135,42 @@ public class Monopoly {
         groupe.add(Rouge);
 
     }
-
+    public void CréerCartesChance() {
+        CarteSpecial BreakFree = new CarteSpecial("Vous êtes libéré de prison. Cette carte peut être conservée jusqu'à ce qu'elle soit utilisée.", this);
+        CarteDeplace ReculeTroisCases = new CarteDeplace("Reculez de trois cases.", this);
+        CartePArgent ImpMaison = new CartePArgent(0, "Vous êtes imposés pour les réparations de voirie à raison de : 40€ par maison et 115€ par hôtel.", this);
+        CartePArgent ExesVitesse = new CartePArgent(15, "Amende pour excès de vitesse : 15€.", this);
+        CartePArgent RepMaison = new CartePArgent(0, "Faites des réparations dans toutes vos maisons : versez pour chaque maison 25€ et pour chaque hôtel 100€.", this);
+        CartePArgent Ivresse = new CartePArgent(20, "Amende pour ivresse : 20€.", this);
+        CarteDeplace CaseDep = new CarteDeplace("Avancez jusqu'à la case Départ.", this);
+        CartePrison AllerPrison = new CartePrison("Allez en prison. Avancez tout droit en prison. Ne passez pas par la case Départ. Ne recevez pas 200€.", this);
+        CarteDeplace AllerHenriMartin = new CarteDeplace("Rendez-vous à l'Avenue Henri-Martin. Si vous passez par la case Départ, recevez 200€.", this);
+        CarteDeplace AllerGdeLyon = new CarteDeplace("Allez à la gare de Lyon. Si vous passez par la case Départ, recevez 200€.", this);
+        CartePArgent Fscolarite = new CartePArgent(150, "Payez pour frais de scolarité : 150€.", this);
+        CarteGArgent MotsCroisés = new CarteGArgent(100, "Vous avez gagné le prix de mots croisés. Recevez 100€.", this);
+        CarteGArgent BanqDivi = new CarteGArgent(50, "La Banque vous verse un dividende de 50€.", this);
+        CarteDeplace AllerRdePaix = new CarteDeplace("Rendez-vous à la Rue de la Paix.", this);
+        CarteGArgent ImmeublePret = new CarteGArgent(150, "Votre immeuble et votre prêt rapportent. Vous devez toucher 150€", this);
+        CarteDeplace AllerBoulevard = new CarteDeplace("Accédez au Boulevard de la Villette. Si vous passez par la case Départ, recevez 200€.", this);
+        
+        Chance.put(1,BreakFree);
+        Chance.put(2,ReculeTroisCases);
+        Chance.put(3,ImpMaison);
+        Chance.put(4,ExesVitesse);
+        Chance.put(5,RepMaison);
+        Chance.put(6,Ivresse);
+        Chance.put(7,CaseDep);
+        Chance.put(8,AllerPrison);
+        Chance.put(9,AllerHenriMartin);
+        Chance.put(10,AllerGdeLyon);
+        Chance.put(11,Fscolarite); 
+        Chance.put(12,MotsCroisés);
+        Chance.put(13,BanqDivi);
+        Chance.put(14,AllerRdePaix);
+        Chance.put(15,ImmeublePret);
+        Chance.put(16,AllerBoulevard);
+        
+    }
     public void LancerDésEtAvancer(Joueur j) {
         inter = new Interface();
         boolean verif = true;
@@ -168,6 +205,7 @@ public class Monopoly {
 //        } else if (verif == true) {
             int des = 0;
             des = des1 + des2;
+            j.setDes(des);
             j.ModifPosition(des);
 
             Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
