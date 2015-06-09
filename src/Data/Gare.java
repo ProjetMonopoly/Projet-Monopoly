@@ -10,7 +10,7 @@ public class Gare extends CarreauPropriete {
         
     
     public int calculLoyerGare(int aNbg) {
-		return super.getLoyerBase()*aNbg;
+		return 25*aNbg;
 	}
     
     
@@ -20,14 +20,17 @@ public class Gare extends CarreauPropriete {
         
         Joueur jproprio = super.getProprietaire();
         
-        int nbg = jproprio.getNbGares(); // pour avoir le nombre de gare du joueur proprietaire
+        int nbg = jproprio.getNbGares();// pour avoir le nombre de gare du joueur proprietaire
         
-        jproprio.setLoyer(calculLoyerGare(nbg)); // pour avoir le prix du loyer
+        int l = this.calculLoyerGare(nbg);
         
-        int l = calculLoyerGare(nbg);
+        jproprio.setLoyer(l); // pour avoir le prix du loyer
+        
+        Monopoly m = super.getMonopoly();
+        
+        m.InfosLoyerGare(jproprio, l);
         
         
-        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l);
         
     }
 
@@ -46,7 +49,7 @@ public class Gare extends CarreauPropriete {
             jProprio.recevoirLoyer(jProprio.getLoyer());
             j.PayerLoyer(jProprio.getLoyer());
             Monopoly M = getMonopoly();
-            M.InfosLoyerGare(jProprio, jProprio.getLoyer(),j.getCash());
+            M.getInter().InfosLoyerGare(jProprio, jProprio.getLoyer());
             
         }
     }

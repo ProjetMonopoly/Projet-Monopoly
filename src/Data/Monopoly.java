@@ -26,6 +26,12 @@ public class Monopoly {
         return lescarreaux;
     }
 
+    public Interface getInter() {
+        return inter;
+    }
+
+    
+    
     public int resultatDés(Joueur j) {
 //            Random rnd = new Random();
 //            int i = rnd.nextInt(6)+1;
@@ -61,6 +67,10 @@ public class Monopoly {
         }
     }
 
+    public void InfosLoyerGare(Joueur jproprio, int l) {
+        inter.InfosLoyerGare(jproprio, l);
+    }
+    
     public ArrayList<Joueur> getLesJoueurs() {
         return lesjoueurs;
     }
@@ -73,19 +83,8 @@ public class Monopoly {
         System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC());
     }
 
-    public void InfosLoyerGare(Joueur jproprio, int l, int Cash) {
-        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l + ", il vous reste " + Cash + '€');
-    }
-
+   
     public void ProcedureConstruire(Joueur aJ, Groupe aGr) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void InfosLoyerCompagnie(Joueur aJProprio, int aL, int aCash) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void InfosLoyerPAC(Joueur aJProprio, int aL, int aCash) {
         throw new UnsupportedOperationException();
     }
 
@@ -163,34 +162,16 @@ public class Monopoly {
             j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
 
             inter.infoJoueur(des, carreauCourant, j);
+            System.out.println("");
 
                 //premiere étape ok 
             ArrayList<Joueur> collectionJoueur = new ArrayList<>();
             collectionJoueur = lesjoueurs;
 
-            System.out.println("");
-
-            for (Joueur i : collectionJoueur) {
-                
-                
-                int cash;
+            //for (Joueur i : collectionJoueur) {
                 inter.infoJoueur2(j, carreauCourant);
-
-                
-
                 System.out.println("");
-
-                ArrayList<ProprieteAConstruire> collectProprio = i.getLesPropio();
-
-                for (ProprieteAConstruire p : collectProprio) {
-                    Groupe groupe;
-                    groupe = p.getGroupe();
-                    inter.infoPropriete(p, groupe);
-                }
-
-                System.out.println("");
-
-            }
+            //}
 
         }
     }

@@ -5,7 +5,7 @@ public class Interface {
     public Monopoly _monopoly;
 
     public void infoJoueur(int D, Carreau c, Joueur j) {
-        System.out.println("Le joueur " + j.getNomJoueur() + " :");
+        System.out.println("Le joueur : " + j.getNomJoueur());
         System.out.println("Total des dés : " + D);
         System.out.println("Le nom du carreau : " + c.getNomCarreau());
     }
@@ -33,8 +33,8 @@ public class Interface {
         System.out.println("La propriété " + p.getNomCarreau() + " a pour groupe " + groupe.getCouleur() + "et possède " + p.getConstruction());
     }
 
-    public void InfosLoyerGare(Joueur aJProprio, int aL, int aCash) {
-        ;
+    public void InfosLoyerGare(Joueur jproprio, int l) {
+        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l );
     }
 
     public void InfoAchat(Joueur aJ, CarreauPropriete aCp) {
