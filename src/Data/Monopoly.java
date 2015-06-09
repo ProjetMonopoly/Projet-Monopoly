@@ -86,10 +86,6 @@ public class Monopoly {
         throw new UnsupportedOperationException();
     }
 
-    public boolean getReponse(Joueur aJ, ProprieteAConstruire aP) {
-        throw new UnsupportedOperationException();
-    }
-
     public void choixTerrain(Joueur aJ, Groupe aGr) {
         throw new UnsupportedOperationException();
     }
@@ -116,7 +112,7 @@ public class Monopoly {
 
     }
 
-    public void LancerDésEtAvancer(Joueur j) {
+    public void LancerDesAvancer(Joueur j) {
         inter = new Interface();
         boolean verif = true;
 
@@ -172,23 +168,23 @@ public class Monopoly {
     }
 
     public void JouerUnCoup(Joueur j) {
-        LancerDésEtAvancer(j);
+        LancerDesAvancer(j);
 
         Carreau c = j.getCarreau(); // pour avoir le carreau actuel
 
-        if ((c.getNumcarreauCourant() == 6) || (c.getNumcarreauCourant() == 16) || (c.getNumcarreauCourant() == 26) || (c.getNumcarreauCourant() == 36)) {
+        if ((c.getNumPositionCourante() == 6) || (c.getNumPositionCourante() == 16) || (c.getNumPositionCourante() == 26) || (c.getNumPositionCourante() == 36)) {
 
             c.action(j);  //gare
 
-        }else if ((c.getNumcarreauCourant() == 13) || (c.getNumcarreauCourant() == 29)){
+        }else if ((c.getNumPositionCourante() == 13) || (c.getNumPositionCourante() == 29)){
            
-            c.action(j);//companie
+            c.action(j);//compagnie
             
-        }else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5)||(c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21)|| (c.getNumcarreauCourant() == 39)){
+        }else if ((c.getNumPositionCourante() == 1) || (c.getNumPositionCourante() == 5)||(c.getNumPositionCourante() == 11) || (c.getNumPositionCourante() == 21)|| (c.getNumPositionCourante() == 39)){
             //case argent
-        }else if ((c.getNumcarreauCourant() == 3) || (c.getNumcarreauCourant() == 8)||(c.getNumcarreauCourant() == 18) || (c.getNumcarreauCourant() == 23)|| (c.getNumcarreauCourant() == 34)|| (c.getNumcarreauCourant() == 37)){
+        }else if ((c.getNumPositionCourante() == 3) || (c.getNumPositionCourante() == 8)||(c.getNumPositionCourante() == 18) || (c.getNumPositionCourante() == 23)|| (c.getNumPositionCourante() == 34)|| (c.getNumPositionCourante() == 37)){
             //case tirage
-        }else if ((c.getNumcarreauCourant() == 31)){
+        }else if ((c.getNumPositionCourante() == 31)){
             //case mouvement
         }else {
             //case propriete

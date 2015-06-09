@@ -7,6 +7,8 @@ public class ProprieteAConstruire extends CarreauPropriete {
 	private final int nbMaisons = 0;
 	private ArrayList<Integer> lesloyerMaison;
         private Groupe groupePropriete;
+        private Joueur j;
+        private Joueur jProprio;
         //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
 
     public ProprieteAConstruire(ArrayList<Integer> lesloyerMaison, int loyerBase, int prixAchat, int numero, String nomCarreau, Monopoly monop) {
@@ -39,6 +41,9 @@ public class ProprieteAConstruire extends CarreauPropriete {
 
 	public void calculLoyerPAC(CouleurPropriete aCoul, int aNbc) {
 		//regarder les  couleurs;
+             {
+                
+            }
 	}
 
 	public void construire() {
@@ -63,7 +68,6 @@ public class ProprieteAConstruire extends CarreauPropriete {
 
         @Override
         public void calculLoyer(Joueur j) {
-            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
         }
 
         @Override

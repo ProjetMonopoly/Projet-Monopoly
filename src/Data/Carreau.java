@@ -22,11 +22,8 @@ public abstract class Carreau {
             this.numero=numero;
 	}
 
-	public boolean getReponse() {
-            throw new UnsupportedOperationException();
-	}
 
-	public int getNumcarreauCourant() {
+	public int getNumPositionCourante() {
             return numero;
 	}
 

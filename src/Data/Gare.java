@@ -43,7 +43,11 @@ public class Gare extends CarreauPropriete {
         
         if (jProprio == null){
             this.achatPropriete(j);
-        }else{
+        }
+        else if (j == jProprio){
+            System.out.println("Vous n'avez pas à payer de loyer, vous êtes chez vous !");
+        }
+        else{
             this.calculLoyer(jProprio);
             
             int loyerPro = jProprio.getLoyer();

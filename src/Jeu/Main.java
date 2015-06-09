@@ -60,7 +60,7 @@ public class Main {
        
         
 
-        for (Joueur j : monop.getLesJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
+        for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
             
 
             System.out.println("");

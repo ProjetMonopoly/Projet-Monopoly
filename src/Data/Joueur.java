@@ -50,7 +50,7 @@ public class Joueur {
     }
 
     public int getNumCarreau() {
-        return this.positionCourante.getNumcarreauCourant();
+        return this.positionCourante.getNumPositionCourante();
     }
 
     public int getNbGares() {
@@ -67,10 +67,10 @@ public class Joueur {
     }
 
     public void ModifPosition(int numero) {
-        if (positionCourante.getNumcarreauCourant() + numero > 40) { //si le numero du carreau + des > 40 alors il y a un decalage
-            setDeplacement(positionCourante.getNumcarreauCourant() + numero - 40);
+        if (positionCourante.getNumPositionCourante() + numero > 40) { //si le numero du carreau + des > 40 alors il y a un decalage
+            setDeplacement(positionCourante.getNumPositionCourante() + numero - 40);
         } else {
-            setDeplacement(numero + positionCourante.getNumcarreauCourant());
+            setDeplacement(numero + positionCourante.getNumPositionCourante());
         }
     }
 

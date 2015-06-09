@@ -34,7 +34,7 @@ public class Interface {
     }
 
     public void InfosLoyer(Joueur jproprio, int l) {
-        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l );
+        System.out.println("Le proprietaire de cette case est " + jproprio.getNomJoueur() + ", le montant du loyer est " + l);
     }
 
     public void InfoAchat(Joueur aJ, CarreauPropriete aCp) {

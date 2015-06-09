@@ -25,10 +25,6 @@ public abstract class CarreauPropriete extends Carreau {
         
         
 
-	public void Infos(String aNomCarreau, String aNomG) {
-		throw new UnsupportedOperationException();
-	}
-
 	public String getNomC() {
 		return super.getNomCarreau();
 	}
