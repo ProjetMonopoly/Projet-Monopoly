@@ -17,7 +17,8 @@ public class Joueur {
     private int des;//pour le resultat du lancé de des
     private int deplacement;// pour savoir ou est le joueur apres son lancé de dés
     private int loyer = 0; //pour avoir un variable loyer pour recevoirloyer, payerloyer
-
+    
+    
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
         this.monopoly = monopoly;
@@ -159,5 +160,12 @@ public class Joueur {
     public void PayerLoyer(int l) {
         cash = cash - l;
     }
+    
 
+  
+    
+    
+    
 }
+
+

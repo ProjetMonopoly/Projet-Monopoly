@@ -165,7 +165,7 @@ public class Monopoly {
         des2 = resultatDés(j);
 
         j.setDouble(0);
-//        if (des2 == des1) {
+//        if (des2 == des1) { a remettre apres
 //
 //            while (verif == true) {
 //                des1 = resultatDés(j);
@@ -205,7 +205,7 @@ public class Monopoly {
                 System.out.println("");
             //}
 
-        //}
+        //} a remettre apres
     }
 
     public void JouerUnCoup(Joueur j) {
