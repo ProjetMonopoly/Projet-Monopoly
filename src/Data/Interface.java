@@ -112,5 +112,21 @@ public class Interface {
     public void InfosLoyerPro(Joueur j, int L) {
         System.out.println("Le joueur " + j.getNomJoueur() + " a gagné " + L + ". Son cash est de " + j.getCash());
     }
+    
+    public void InfosAchatOuiNon(){
+        System.out.println("Voulez-vous l'acheter (oui/non) ? ");
+    }
+    
+    public void InfosPossibilitéAchat(Joueur aJ, CarreauPropriete aCp){
+        System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC());
 
+    }
+    public void InfosNombreJoueur(){
+        System.out.println("Combien de joueur ? (entre 2 et 6): ");
+    }
+    
+    public void InfosNomJoueur(int i){
+        System.out.println("Entrer le nom du joueur " + i + " :");
+
+    }
 }

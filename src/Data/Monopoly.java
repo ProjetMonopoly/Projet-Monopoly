@@ -61,11 +61,10 @@ public class Monopoly {
     public boolean AchatProp() {
 
         Scanner sc1 = new Scanner(System.in);
-        System.out.println("Vous voulez l'acheter (oui/non) ? ");
+        inter.InfosAchatOuiNon();
         String reponse = sc1.nextLine();
 
-        String oui = "oui";
-        if (oui.equals(reponse)) {
+        if (sc1.nextLine().equalsIgnoreCase("oui")) {
             return true;
         } else {
             return false;
@@ -89,7 +88,7 @@ public class Monopoly {
     }
 
     public void ProcedureAchat(Joueur aJ, CarreauPropriete aCp) {
-        System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC());
+        inter.InfosPossibilitéAchat(aJ, aCp);
     }
 
     public void ProcedureConstruire(Joueur j, ArrayList<ProprieteAConstruire> possibleConstruction) {
@@ -119,7 +118,7 @@ public class Monopoly {
     }
 
     public void choixTerrain(Joueur aJ, Groupe aGr) {
-        throw new UnsupportedOperationException();
+       
     }
 
     public void CréerGroupe() {
@@ -183,7 +182,7 @@ public class Monopoly {
 
     }
 
-    public void LancerDésEtAvancer(Joueur j) {
+    public void LancerDesAvancer(Joueur j) {
         inter = new Interface();
         boolean verif = true;
 
@@ -216,7 +215,7 @@ public class Monopoly {
     }
 
     public void JouerUnCoup(Joueur j) {
-        LancerDésEtAvancer(j);
+        LancerDesAvancer(j);
 
         Carreau c = j.getCarreau(); // pour avoir le carreau actuel
 
@@ -247,15 +246,11 @@ public class Monopoly {
         Carreau carreauInit = lescarreaux.get(1);
         int nbJoueur;
         Scanner sc1 = new Scanner(System.in);
-        System.out.println("Combien de joueur: ");
+        inter.InfosNombreJoueur();
         nbJoueur = Integer.parseInt(sc1.nextLine());
-        
-        System.out.println("Entrer le nom du joueur " + 1 + " :");
-        Joueur j1 = new Joueur(sc1.nextLine(),this,carreauInit);
-      
-        
+               
         for (int i = 1; i <= nbJoueur; i++) {
-            System.out.println("Entrer le nom du joueur " + i + " :");
+            inter.InfosNomJoueur(i);
             Joueur j = new Joueur(sc1.nextLine(), this, carreauInit);
             int de1 = j.resultatDés();
             int de2 = j.resultatDés();
