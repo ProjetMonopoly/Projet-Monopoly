@@ -11,6 +11,7 @@ public class Interface {
         System.out.println("Le joueur : " + j.getNomJoueur());
         System.out.println("Total des dés : " + D);
         System.out.println("Le nom du carreau : " + c.getNomCarreau());
+        System.out.println("Le carrea numero : " + c.getNumcarreauCourant());
     }
 
     public void infoJoueur2(Joueur j, Carreau c) { //a voir

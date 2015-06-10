@@ -41,7 +41,7 @@ public class Main {
         Scanner sc1 = new Scanner(System.in);
         System.out.println("Combien de joueur: ");
         nbJoueur = Integer.parseInt(sc1.nextLine());
-
+        System.out.println("");  
 //        System.out.println("Entrer le nom du joueur " + 1 + " :");
 //        Joueur j1 = new Joueur(sc1.nextLine(),monop,carreauInit);
 //        int des = j1.resultatDés();
@@ -54,23 +54,25 @@ public class Main {
             j.setDes(j.resultatDés());
             J.add(j);
             monop.setLesJoueurs(j);
-
+            System.out.println("");  
         }
 
+        boolean continu = true;
+        while (continu){
+        
         for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
 
             System.out.println("");
 
             monop.JouerUnCoup(j);
+            
+            if (j.getCash()<0){
+                continu=false;
+                System.out.println("Le joueur " + j.getNomJoueur() + " a perdu !! LOL MDR SA MARCHE PEUT ETRE ON SAIT PAS SI ON VOIT PAS SE MESS");
+            }
         }
 
-        for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
-
-            System.out.println("");
-
-            monop.JouerUnCoup(j);
-        }
-
+        } 
     }
 
 }

@@ -17,8 +17,7 @@ public class Joueur {
     private int des;//pour le resultat du lancé de des
     private int deplacement;// pour savoir ou est le joueur apres son lancé de dés
     private int loyer = 0; //pour avoir un variable loyer pour recevoirloyer, payerloyer
-    
-    
+
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
         this.monopoly = monopoly;
@@ -80,14 +79,14 @@ public class Joueur {
     }
 
     public int getNbPropriCouleur(CouleurPropriete Coul) {
-        int nbc = 0; 
-        
-        for (ProprieteAConstruire p : lesproprietesAConstruire){
-            if (p.getGroupe().getCouleur() == Coul){
-                nbc = nbc +1;
+        int nbc = 0;
+
+        for (ProprieteAConstruire p : lesproprietesAConstruire) {
+            if (p.getGroupe().getCouleur() == Coul) {
+                nbc = nbc + 1;
             }
         }
-        
+
         return nbc;
     }
 
@@ -169,28 +168,26 @@ public class Joueur {
         cash = cash - l;
     }
 
-    
+    public boolean PossedeGroupe(Groupe gr) {
 
-
-    public boolean PossedeGroupe(Groupe gr){
-        
         ArrayList<ProprieteAConstruire> propriGroupe;
         ArrayList<ProprieteAConstruire> propriJoueur;
         boolean estPresent;
-        
-        propriGroupe= gr.getLesproprietes();
-        propriJoueur= this.getLesPropio();
-        
-        estPresent=false;
-        
-        for(ProprieteAConstruire pacGr: propriGroupe){
-            for (ProprieteAConstruire pacJ: propriJoueur){
-                if (pacGr.equals(pacJ)){
-                    estPresent=true; break;
+
+        propriGroupe = gr.getLesproprietes();
+        propriJoueur = this.getLesPropio();
+
+        estPresent = false;
+
+        for (ProprieteAConstruire pacGr : propriGroupe) {
+            for (ProprieteAConstruire pacJ : propriJoueur) {
+                if (pacGr.equals(pacJ)) {
+                    estPresent = true;
+                    break;
                 }
-                estPresent=false;
+                estPresent = false;
             }
-            if (estPresent=false){
+            if (estPresent = false) {
                 break;
             }
         }
@@ -198,5 +195,3 @@ public class Joueur {
     }
 
 }
-
-

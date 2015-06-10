@@ -456,7 +456,7 @@ public class ProprieteAConstruire extends CarreauPropriete {
             this.achatPropriete(j);
         } else if (jProprio == j) {
             System.out.println("Vous etes les propriétaires, vous n'avez rien à payer");
-            this.construire(j);
+            //this.construire(j);
         } else {
             this.calculLoyer(j);
 
@@ -484,6 +484,7 @@ public class ProprieteAConstruire extends CarreauPropriete {
             Monopoly m = this.getMonopoly();  // Pour obtenir le monop
 
             m.ProcedureAchat(j, this);  //envoi un message
+            System.out.println("Il vous reste " + j.getCash() +'€');
 
             boolean confirmer = false;
             confirmer = m.AchatProp();
