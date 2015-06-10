@@ -24,7 +24,7 @@ public class Gare extends CarreauPropriete {
         
         Monopoly m = super.getMonopoly();
         
-        m.InfosLoyer(j, l);
+        m.InfosLoyerJoueur(j, l);
         
         
         

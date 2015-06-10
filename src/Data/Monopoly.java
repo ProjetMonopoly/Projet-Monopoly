@@ -8,6 +8,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.TreeMap;
@@ -22,10 +23,12 @@ public class Monopoly {
     private HashMap<Integer, Carreau> lescarreaux;
     private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
     public Interface inter;
-    private ArrayList<Integer, Carte> Chance;
-    private ArrayList<Integer, Carte> Communauté;
+    private ArrayList<Carte> Chance;
+    private ArrayList<Carte> Communaute;
     private ArrayList<Groupe> groupe = new ArrayList<>();
     private HashMap<String,Integer> ordre = new HashMap<>();
+    private LinkedList<Carte> ChanceTrie = new LinkedList<>();
+    private LinkedList<Carte> CommunauteTrie = new LinkedList<>();
 
     public HashMap<Integer, Carreau> getLesCarreaux() {
         return lescarreaux;
@@ -161,22 +164,22 @@ public class Monopoly {
 
 
     
-        Chance.put(1, BreakFree);
-        Chance.put(2, ReculeTroisCases);
-        Chance.put(3, ImpMaison);
-        Chance.put(4, ExesVitesse);
-        Chance.put(5, RepMaison);
-        Chance.put(6, Ivresse);
-        Chance.put(7, CaseDep);
-        Chance.put(8, AllerPrison);
-        Chance.put(9, AllerHenriMartin);
-        Chance.put(10, AllerGdeLyon);
-        Chance.put(11, Fscolarite);
-        Chance.put(12, MotsCroisés);
-        Chance.put(13, BanqDivi);
-        Chance.put(14, AllerRdePaix);
-        Chance.put(15, ImmeublePret);
-        Chance.put(16, AllerBoulevard);
+        Chance.add(BreakFree);
+        Chance.add(ReculeTroisCases);
+        Chance.add(ImpMaison);
+        Chance.add(ExesVitesse);
+        Chance.add(RepMaison);
+        Chance.add(Ivresse);
+        Chance.add(CaseDep);
+        Chance.add(AllerPrison);
+        Chance.add(AllerHenriMartin);
+        Chance.add(AllerGdeLyon);
+        Chance.add(Fscolarite);
+        Chance.add(MotsCroisés);
+        Chance.add(BanqDivi);
+        Chance.add(AllerRdePaix);
+        Chance.add(ImmeublePret);
+        Chance.add(AllerBoulevard);
 
     }
 
@@ -217,19 +220,19 @@ public class Monopoly {
 
         Carreau c = j.getCarreau(); // pour avoir le carreau actuel
 
-        if ((c.getNumcarreauCourant() == 6) || (c.getNumcarreauCourant() == 16) || (c.getNumcarreauCourant() == 26) || (c.getNumcarreauCourant() == 36)) {
+        if ((c.getNumPositionCourante()== 6) || (c.getNumPositionCourante() == 16) || (c.getNumPositionCourante()== 26) || (c.getNumPositionCourante() == 36)) {
 
-            c.action(j);  //gare
+                c.action(j);  //gare
 
-        }else if ((c.getNumcarreauCourant() == 13) || (c.getNumcarreauCourant() == 29)){
+            } else if ((c.getNumPositionCourante()== 13) || (c.getNumPositionCourante() == 29)) {
            
             c.action(j);//companie
             
-        }else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5)||(c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21)|| (c.getNumcarreauCourant() == 39)){
+        }else if ((c.getNumPositionCourante() == 1) || (c.getNumPositionCourante() == 5)||(c.getNumPositionCourante() == 11) || (c.getNumPositionCourante() == 21)|| (c.getNumPositionCourante() == 39)){
             //case argent
-        }else if ((c.getNumcarreauCourant() == 3) || (c.getNumcarreauCourant() == 8)||(c.getNumcarreauCourant() == 18) || (c.getNumcarreauCourant() == 23)|| (c.getNumcarreauCourant() == 34)|| (c.getNumcarreauCourant() == 37)){
+        }else if ((c.getNumPositionCourante() == 3) || (c.getNumPositionCourante() == 8)||(c.getNumPositionCourante() == 18) || (c.getNumPositionCourante() == 23)|| (c.getNumPositionCourante() == 34)|| (c.getNumPositionCourante() == 37)){
             //case tirage
-        }else if ((c.getNumcarreauCourant() == 31)){
+        }else if ((c.getNumPositionCourante() == 31)){
             //case mouvement
         }else {
             //case propriete
@@ -237,7 +240,7 @@ public class Monopoly {
             
 
     }
-        }
+        
     
     public void InitialiserPartie(){
      

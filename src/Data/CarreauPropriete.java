@@ -7,9 +7,6 @@ public abstract class CarreauPropriete extends Carreau {
 	private int prixAchat;
 	private Joueur proprietaire;
 
-    private int loyerBase;
-    private int prixAchat;
-    private Joueur proprietaire;
 
     public CarreauPropriete(int _loyerBase, int _prixAchat, int _numero, String _nomCarreau, Monopoly monop) {
         super(_numero, _nomCarreau, monop);

@@ -4,7 +4,7 @@ import static Data.CouleurPropriete.*;
 import java.util.ArrayList;
 
 public class ProprieteAConstruire extends CarreauPropriete {
-	private final int nbMaisons = 0;
+	private int nbMaisons = 0;
 	private ArrayList<Integer> lesloyerMaison;
         private Groupe groupePropriete;
         //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
