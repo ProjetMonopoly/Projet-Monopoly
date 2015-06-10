@@ -11,18 +11,20 @@ package Data;
  * @author hoenc
  */
 public abstract class Carte {
-    private int numero;
+    private String description; //Chaque carte possède une description
     private Monopoly monopoly; 
-    public Carte (int numero,Monopoly monop) {
-        numero = this.numero;
+    public Carte (String des,Monopoly monop) {
+        des = description;
         monop = monopoly; 
     }
     
-    public void action (Joueur j) {
-        
-    }
+    public abstract void action (Joueur j);
 
-    public int getNumero() {
-        return numero;
+    public String getDescription() {
+        return description;
     }
+        
+    
+
+    
 }

@@ -13,8 +13,8 @@ package Data;
 public class CarteGArgent extends Carte {
     private int montant; 
 
-    public CarteGArgent(int montant, int numero, Monopoly monop) {
-        super(numero, monop);
+    public CarteGArgent(int montant, String des, Monopoly monop) {
+        super(des, monop);
         this.montant = montant;
     }
     public void ActionCarteAnniversaire () {
@@ -22,5 +22,10 @@ public class CarteGArgent extends Carte {
     }
     public int DonneAnniversaire(){
         return(0);
+    }
+
+    @Override
+    public void action(Joueur j) {
+        
     }
 }
