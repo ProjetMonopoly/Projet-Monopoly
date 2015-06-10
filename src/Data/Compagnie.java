@@ -67,7 +67,7 @@ public class Compagnie extends CarreauPropriete {
             Monopoly m = this.getMonopoly();  // Pour obtenir le monop
 
             m.ProcedureAchat(j, this);//envoi un message
-            System.out.println("Il vous reste " + j.getCash() +'€');
+           
 
             boolean confirmer = false;
             confirmer = m.AchatProp();
@@ -78,6 +78,7 @@ public class Compagnie extends CarreauPropriete {
                 j.addCompanie(this);
 
                 System.out.println("Tu as acheté la Companie");
+                System.out.println("Il vous reste " + j.getCash() +'€');
                 System.out.println("");
             }
 

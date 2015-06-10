@@ -166,80 +166,78 @@ public class Monopoly {
 
     public void LancerDésEtAvancer(Joueur j) {
         inter = new Interface();
-        boolean verif = true;
 
         System.out.println("");
         int des1 = 0;
         int des2 = 0;
+        int nbDouble = 0;
 
         des1 = resultatDés(j);
         des2 = resultatDés(j);
-
+        int des = 0;
         j.setDouble(0);
+        des = des1 + des2;
+
+        j.setDes(des);
+        j.ModifPosition(des);
+
+        Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
+        j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
+
+        inter.infoJoueur(des, carreauCourant, j);
+        System.out.println("");
+
+        inter.infoJoueur2(j, carreauCourant);
+        System.out.println("");
+
         if (des2 == des1) {
+            j.setDouble(j.getDouble() + 1);
+            nbDouble = nbDouble + 1;
 
-            while (verif == true) {
-                des1 = resultatDés(j);
-                des2 = resultatDés(j);
+            System.out.println("Le joueur " + j.getNomJoueur() + " a fait " + nbDouble + " double");
+            j.setVerif(true);
 
-                j.setDouble(j.getDouble() + 1);
+            if (j.getDouble() == 3) {
+                j.setDouble(0);
+                Carreau carreauPrison = lescarreaux.get(11);
+                j.setPositionCourante(carreauPrison);
 
-                if (j.getDouble() == 3) {
-                    j.setDouble(0);
-                    Carreau carreauPrison = lescarreaux.get(11);
-                    j.setPositionCourante(carreauPrison);
-
-                    System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
-
-                    verif = false;
-                }
+                System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
+                j.setVerif(false);
 
             }
-        } else if (verif == true) {
-            int des = 0;
-            des = des1 + des2;
-            j.setDes(des);
-            j.ModifPosition(des);
 
-            Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
-            j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
-
-            inter.infoJoueur(des, carreauCourant, j);
-            System.out.println("");
-
-            //premiere étape ok 
-            ArrayList<Joueur> collectionJoueur = new ArrayList<>();
-            collectionJoueur = lesjoueurs;
-
-            //for (Joueur i : collectionJoueur) {
-            inter.infoJoueur2(j, carreauCourant);
-            System.out.println("");
-            //}
-
+        } else {
+            j.setVerif(false);
         }
     }
 
     public void JouerUnCoup(Joueur j) {
-        LancerDésEtAvancer(j);
+        boolean test = true;
+        while (test) {
 
-        Carreau c = j.getCarreau(); // pour avoir le carreau actuel
+            LancerDésEtAvancer(j);
 
-        if ((c.getNumcarreauCourant() == 6) || (c.getNumcarreauCourant() == 16) || (c.getNumcarreauCourant() == 26) || (c.getNumcarreauCourant() == 36)) {
+            Carreau c = j.getCarreau(); // pour avoir le carreau actuel
 
-            c.action(j);  //gare
+            if ((c.getNumcarreauCourant() == 6) || (c.getNumcarreauCourant() == 16) || (c.getNumcarreauCourant() == 26) || (c.getNumcarreauCourant() == 36)) {
 
-        } else if ((c.getNumcarreauCourant() == 13) || (c.getNumcarreauCourant() == 29)) {
+                c.action(j);  //gare
 
-            c.action(j);//companie
+            } else if ((c.getNumcarreauCourant() == 13) || (c.getNumcarreauCourant() == 29)) {
 
-        } else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5) || (c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21) || (c.getNumcarreauCourant() == 39)) {
-            //case argent
-        } else if ((c.getNumcarreauCourant() == 3) || (c.getNumcarreauCourant() == 8) || (c.getNumcarreauCourant() == 18) || (c.getNumcarreauCourant() == 23) || (c.getNumcarreauCourant() == 34) || (c.getNumcarreauCourant() == 37)) {
-            //case tirage
-        } else if ((c.getNumcarreauCourant() == 31)) {
-            //case mouvement
-        } else {
-            c.action(j); //case propriete
+                c.action(j);//companie
+
+            } else if ((c.getNumcarreauCourant() == 1) || (c.getNumcarreauCourant() == 5) || (c.getNumcarreauCourant() == 11) || (c.getNumcarreauCourant() == 21) || (c.getNumcarreauCourant() == 39)) {
+                //case argent
+            } else if ((c.getNumcarreauCourant() == 3) || (c.getNumcarreauCourant() == 8) || (c.getNumcarreauCourant() == 18) || (c.getNumcarreauCourant() == 23) || (c.getNumcarreauCourant() == 34) || (c.getNumcarreauCourant() == 37)) {
+                //case tirage
+            } else if ((c.getNumcarreauCourant() == 31)) {
+                //case mouvement
+            } else {
+                c.action(j); //case propriete
+            }
+            test = j.isVerif();
         }
 
     }
@@ -276,7 +274,7 @@ public class Monopoly {
                         loyer.add(Integer.parseInt(data.get(i)[j]));
                     }
 
-                                        //Groupe(int _prixAchatMaison, CouleurPropriete _couleur)
+                    //Groupe(int _prixAchatMaison, CouleurPropriete _couleur)
                     //ProprieteAConstruire(ArrayList<Integer> _loyerMaison, Groupe _groupePropriete, int _loyerBase, int _prixAchat, int _numero, String _nomCarreau)
                     carreauAConstruire = new ProprieteAConstruire(loyer, Integer.parseInt(data.get(i)[5]), Integer.parseInt(data.get(i)[4]), Integer.parseInt(data.get(i)[1]), data.get(i)[2], this);
 

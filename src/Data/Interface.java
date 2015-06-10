@@ -11,7 +11,7 @@ public class Interface {
         System.out.println("Le joueur : " + j.getNomJoueur());
         System.out.println("Total des dés : " + D);
         System.out.println("Le nom du carreau : " + c.getNomCarreau());
-        System.out.println("Le carrea numero : " + c.getNumcarreauCourant());
+        System.out.println("Le carreau numero : " + c.getNumcarreauCourant());
     }
 
     public void infoJoueur2(Joueur j, Carreau c) { //a voir
@@ -110,7 +110,7 @@ public class Interface {
     }
 
     public void InfosLoyerPro(Joueur j, int L) {
-        System.out.println("Le joueur " + j.getNomJoueur() + " a payé un loyer de " + L + ". Son cash est de " + j.getCash());
+        System.out.println("Le joueur " + j.getNomJoueur() + " a gagné " + L + ". Son cash est de " + j.getCash());
     }
 
 }

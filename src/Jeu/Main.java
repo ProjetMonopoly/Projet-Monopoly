@@ -21,7 +21,7 @@ public class Main {
     private static Monopoly monop;
 
     public static void main(String[] args) {
-        monop = new Monopoly("/users/info/etu-s2/chevillc/M2013-Java/Projet-Monopoly/src/Data/src");
+        monop = new Monopoly("./src/Data/src");
         ArrayList<Joueur> J = new ArrayList<>();
 
         int compte = 0;

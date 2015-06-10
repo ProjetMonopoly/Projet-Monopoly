@@ -17,6 +17,8 @@ public class Joueur {
     private int des;//pour le resultat du lancé de des
     private int deplacement;// pour savoir ou est le joueur apres son lancé de dés
     private int loyer = 0; //pour avoir un variable loyer pour recevoirloyer, payerloyer
+    private boolean prison = false;
+    private boolean verif = true; //permet de voir par rapport au double
 
     public Joueur(String nomJoueur, Monopoly monopoly, Carreau positionCourante) {
         this.nomJoueur = nomJoueur;
@@ -193,5 +195,15 @@ public class Joueur {
         }
         return estPresent;
     }
+
+    public boolean isVerif() {
+        return verif;
+    }
+
+    public void setVerif(boolean verif) {
+        this.verif = verif;
+    }
+    
+    
 
 }
