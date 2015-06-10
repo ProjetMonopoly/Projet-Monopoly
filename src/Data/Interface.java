@@ -102,8 +102,8 @@ public class Interface {
     public void InfoPasConstruire(Joueur j) {
         System.out.println("Joueur : " + j.getNomJoueur());
         System.out.println("Vous ne pouvez pas construire! ");
-
-    }
+		}
+ 
 
     public void InfosLoyerJoueur(Joueur j, int L) {
         System.out.println("Le joueur " + j.getNomJoueur() + " a payé un loyer de " + L + ". Son cash est de " + j.getCash());

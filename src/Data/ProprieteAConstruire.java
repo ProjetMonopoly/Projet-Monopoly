@@ -4,13 +4,10 @@ import static Data.CouleurPropriete.*;
 import java.util.ArrayList;
 
 public class ProprieteAConstruire extends CarreauPropriete {
-
-    private int nbMaisons = 0;
-    private ArrayList<Integer> lesloyerMaison;
-    private Groupe groupePropriete;
-    private Joueur j;
-    private Joueur jProprio;
-    //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
+	private final int nbMaisons = 0;
+	private ArrayList<Integer> lesloyerMaison;
+        private Groupe groupePropriete;
+        //bleuFonce, orange, mauve, violet, bleuCiel, jaune, vert, rouge
 
     public ProprieteAConstruire(ArrayList<Integer> lesloyerMaison, int loyerBase, int prixAchat, int numero, String nomCarreau, Monopoly monop) {
         super(loyerBase, prixAchat, numero, nomCarreau, monop);
