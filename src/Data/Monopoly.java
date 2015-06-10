@@ -10,19 +10,22 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 public class Monopoly {
 
-    private int _nbMaisons = 32;
-    private int _nbHotels = 12;
+    private int nbMaisons = 32;
+
+    private int nbHotels = 12;
 //        private int des;//pour le resultat du lancé de des
     private int numero; //pour le numero de la case en cour
     private HashMap<Integer, Carreau> lescarreaux;
     private ArrayList<Joueur> lesjoueurs = new ArrayList<Joueur>();
     public Interface inter;
-    private HashMap<Integer,Carte> Chance;
-    private HashMap<Integer,Carte> Communauté;
+    private HashMap<Integer, Carte> Chance;
+    private HashMap<Integer, Carte> Communauté;
     private ArrayList<Groupe> groupe = new ArrayList<>();
+    private HashMap<String,Integer> ordre = new HashMap<>();
 
     public HashMap<Integer, Carreau> getLesCarreaux() {
         return lescarreaux;
@@ -32,25 +35,13 @@ public class Monopoly {
         return inter;
     }
 
-    
-    
     public int resultatDés(Joueur j) {
-//            Random rnd = new Random();
-//            int i = rnd.nextInt(6)+1;
-        int i = 6;
-        return i;
-//            int des1 = ((int) (Math.random()*6) + 1);
-//            int des2 = ((int) (Math.random()*6) + 1);
-//            
-//            if (des1==des2){ //si le joueur a un double alors se compteur de double augmente
-//                j.setDouble(j.getDouble()+1);
-//                
-//                if(j.getDouble()==3)
-//                
-//                return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1)); //a voir si il refait encore un double
-//            }else {return (((int) (Math.random()*6) + 1) + ((int) (Math.random()*6)+1));}
-    }
+        Random rnd = new Random();
+        int i = rnd.nextInt(6) + 1;
 
+        return i;
+
+    }
 
     public boolean AchatProp() {
 
@@ -58,7 +49,7 @@ public class Monopoly {
         System.out.println("Vous voulez l'acheter (oui/non) ? ");
         String reponse = sc1.nextLine();
 
-        String oui ="oui";
+        String oui = "oui";
         if (oui.equals(reponse)) {
             return true;
         } else {
@@ -66,10 +57,13 @@ public class Monopoly {
         }
     }
 
-    public void InfosLoyer(Joueur jproprio, int l) {
-        inter.InfosLoyer(jproprio, l);
+    public void InfosLoyerJoueur(Joueur j, int l) {
+        inter.InfosLoyerJoueur(j, l);
     }
-    
+
+    public void InfosLoyerPro(Joueur j, int l) {
+        inter.InfosLoyerPro(j, l);
+    }
 
     public ArrayList<Joueur> getJoueurs() {
         return lesjoueurs;
@@ -83,9 +77,30 @@ public class Monopoly {
         System.out.println("Le joueur " + aJ.getNomJoueur() + " a la possibilité d'acheter la case " + aCp.getNomC());
     }
 
-   
-    public void ProcedureConstruire(Joueur aJ, Groupe aGr) {
-        throw new UnsupportedOperationException();
+    public void ProcedureConstruire(Joueur j, ArrayList<ProprieteAConstruire> possibleConstruction) {
+        inter.InfoConstruire(j, possibleConstruction);
+    }
+
+    public boolean getReponse(Joueur j, ProprieteAConstruire pac) {
+        pac.debutConstruction(j);
+        return true;
+
+    }
+
+    public int getNbMaisons() {
+        return nbMaisons;
+    }
+
+    public void setNbMaisons(int nbMaisons) {
+        this.nbMaisons = nbMaisons;
+    }
+
+    public int getNbHotels() {
+        return nbHotels;
+    }
+
+    public void setNbHotels(int nbHotels) {
+        this.nbHotels = nbHotels;
     }
 
     public void choixTerrain(Joueur aJ, Groupe aGr) {
@@ -113,6 +128,7 @@ public class Monopoly {
         groupe.add(Rouge);
 
     }
+
     public void CréerCartesChance() {
         CarteSpecial BreakFree = new CarteSpecial("Vous êtes libéré de prison. Cette carte peut être conservée jusqu'à ce qu'elle soit utilisée.", this);
         CarteDeplace ReculeTroisCases = new CarteDeplace("Reculez de trois cases.", this);
@@ -130,105 +146,140 @@ public class Monopoly {
         CarteDeplace AllerRdePaix = new CarteDeplace("Rendez-vous à la Rue de la Paix.", this);
         CarteGArgent ImmeublePret = new CarteGArgent(150, "Votre immeuble et votre prêt rapportent. Vous devez toucher 150€", this);
         CarteDeplace AllerBoulevard = new CarteDeplace("Accédez au Boulevard de la Villette. Si vous passez par la case Départ, recevez 200€.", this);
-        
-        Chance.put(1,BreakFree);
-        Chance.put(2,ReculeTroisCases);
-        Chance.put(3,ImpMaison);
-        Chance.put(4,ExesVitesse);
-        Chance.put(5,RepMaison);
-        Chance.put(6,Ivresse);
-        Chance.put(7,CaseDep);
-        Chance.put(8,AllerPrison);
-        Chance.put(9,AllerHenriMartin);
-        Chance.put(10,AllerGdeLyon);
-        Chance.put(11,Fscolarite); 
-        Chance.put(12,MotsCroisés);
-        Chance.put(13,BanqDivi);
-        Chance.put(14,AllerRdePaix);
-        Chance.put(15,ImmeublePret);
-        Chance.put(16,AllerBoulevard);
-        
+
+
+    
+        Chance.put(1, BreakFree);
+        Chance.put(2, ReculeTroisCases);
+        Chance.put(3, ImpMaison);
+        Chance.put(4, ExesVitesse);
+        Chance.put(5, RepMaison);
+        Chance.put(6, Ivresse);
+        Chance.put(7, CaseDep);
+        Chance.put(8, AllerPrison);
+        Chance.put(9, AllerHenriMartin);
+        Chance.put(10, AllerGdeLyon);
+        Chance.put(11, Fscolarite);
+        Chance.put(12, MotsCroisés);
+        Chance.put(13, BanqDivi);
+        Chance.put(14, AllerRdePaix);
+        Chance.put(15, ImmeublePret);
+        Chance.put(16, AllerBoulevard);
+
     }
+
     public void LancerDésEtAvancer(Joueur j) {
         inter = new Interface();
-        boolean verif = true;
 
         System.out.println("");
         int des1 = 0;
         int des2 = 0;
+        int nbDouble = 0;
 
         des1 = resultatDés(j);
         des2 = resultatDés(j);
-
+        int des = 0;
         j.setDouble(0);
-//        if (des2 == des1) {
-//
-//            while (verif == true) {
-//                des1 = resultatDés(j);
-//                des2 = resultatDés(j);
-//
-//                j.setDouble(j.getDouble() + 1);
-//
-//                if (j.getDouble() == 3) {
-//                    j.setDouble(0);
-//                    Carreau carreauPrison = lescarreaux.get(11);
-//                    j.setPositionCourante(carreauPrison);
-//
-//                    System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
-//
-//                    verif = false;
-//                }
-//
-//            }
-//        } else if (verif == true) {
-            int des = 0;
-            des = des1 + des2;
-            j.setDes(des);
-            j.ModifPosition(des);
+        des = des1 + des2;
 
-            Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
-            j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
+        j.setDes(des);
+        j.ModifPosition(des);
 
-            inter.infoJoueur(des, carreauCourant, j);
-            System.out.println("");
+        Carreau carreauCourant = lescarreaux.get(j.getDeplacement()); //le nouveaux carreau avec le deplacement
+        j.setPositionCourante(carreauCourant); //j'associe le carreaux ou le joueur est apres son deplacement
 
-                //premiere étape ok 
-            ArrayList<Joueur> collectionJoueur = new ArrayList<>();
-            collectionJoueur = lesjoueurs;
+        inter.infoJoueur(des, carreauCourant, j);
+        System.out.println("");
 
-            //for (Joueur i : collectionJoueur) {
-                inter.infoJoueur2(j, carreauCourant);
-                System.out.println("");
-            //}
+        inter.infoJoueur2(j, carreauCourant);
+        System.out.println("");
 
-        //}
+        if (des2 == des1) {
+            j.setDouble(j.getDouble() + 1);
+            nbDouble = nbDouble + 1;
+
+            System.out.println("Le joueur " + j.getNomJoueur() + " a fait " + nbDouble + " double");
+            j.setVerif(true);
+
+            if (j.getDouble() == 3) {
+                j.setDouble(0);
+                Carreau carreauPrison = lescarreaux.get(11);
+                j.setPositionCourante(carreauPrison);
+
+                System.out.println("Le joueur " + j.getNomJoueur() + " à fait 3 double à la suite ce qui l'amene sur la case " + lescarreaux.get(11).getNomCarreau());
+                j.setVerif(false);
+
+            }
+
+        } else {
+            j.setVerif(false);
+        }
     }
 
     public void JouerUnCoup(Joueur j) {
-        LancerDesAvancer(j);
+        boolean test = true;
+        while (test) {
 
-        Carreau c = j.getCarreau(); // pour avoir le carreau actuel
+            LancerDésEtAvancer(j);
 
-        if ((c.getNumPositionCourante() == 6) || (c.getNumPositionCourante() == 16) || (c.getNumPositionCourante() == 26) || (c.getNumPositionCourante() == 36)) {
+            Carreau c = j.getCarreau(); // pour avoir le carreau actuel
 
-            c.action(j);  //gare
+            if ((c.getNumPositionCourante()== 6) || (c.getNumPositionCourante() == 16) || (c.getNumPositionCourante()== 26) || (c.getNumPositionCourante() == 36)) {
 
-        }else if ((c.getNumPositionCourante() == 13) || (c.getNumPositionCourante() == 29)){
-           
-            c.action(j);//compagnie
-            
-        }else if ((c.getNumPositionCourante() == 1) || (c.getNumPositionCourante() == 5)||(c.getNumPositionCourante() == 11) || (c.getNumPositionCourante() == 21)|| (c.getNumPositionCourante() == 39)){
-            //case argent
-        }else if ((c.getNumPositionCourante() == 3) || (c.getNumPositionCourante() == 8)||(c.getNumPositionCourante() == 18) || (c.getNumPositionCourante() == 23)|| (c.getNumPositionCourante() == 34)|| (c.getNumPositionCourante() == 37)){
-            //case tirage
-        }else if ((c.getNumPositionCourante() == 31)){
-            //case mouvement
-        }else {
-            //case propriete
-        }
-            
+                c.action(j);  //gare
+
+            } else if ((c.getNumPositionCourante()== 13) || (c.getNumPositionCourante() == 29)) {
+
+                c.action(j);//companie
+
+            } else if ((c.getNumPositionCourante() == 1) || (c.getNumPositionCourante() == 5) || (c.getNumPositionCourante() == 11) || (c.getNumPositionCourante() == 21) || (c.getNumPositionCourante()== 39)) {
+                //case argent
+            } else if ((c.getNumPositionCourante() == 3) || (c.getNumPositionCourante() == 8) || (c.getNumPositionCourante() == 18) || (c.getNumPositionCourante() == 23) || (c.getNumPositionCourante()== 34) || (c.getNumPositionCourante()== 37)) {
+                //case tirage
+            } else if ((c.getNumPositionCourante() == 31)) {
+                //case mouvement
+            } else {
+                c.action(j); //case propriete
+            }
+            test = j.isVerif();
 
     }
+        }
+    
+    public void InitialiserPartie(){
+     
+        Carreau carreauInit = lescarreaux.get(1);
+        int nbJoueur;
+        Scanner sc1 = new Scanner(System.in);
+        System.out.println("Combien de joueur: ");
+        nbJoueur = Integer.parseInt(sc1.nextLine());
+        
+        System.out.println("Entrer le nom du joueur " + 1 + " :");
+        Joueur j1 = new Joueur(sc1.nextLine(),this,carreauInit);
+      
+        
+        for (int i = 1; i <= nbJoueur; i++) {
+            System.out.println("Entrer le nom du joueur " + i + " :");
+            Joueur j = new Joueur(sc1.nextLine(), this, carreauInit);
+            int de1 = j.resultatDés();
+            int de2 = j.resultatDés();
+            int des = de1+de2;
+            ordre.put(j.getNomJoueur(),des);
+            }
+        System.out.println(ordre);
+        TreeMap<String,Integer> sorted = SortByValue(ordre);
+        System.out.println(sorted);
+    }
+    
+    public static TreeMap<String,Integer> SortByValue (HashMap<String,Integer> map){
+        ValueComparator vc = new ValueComparator(map);
+        TreeMap<String,Integer> sorted= new TreeMap<String,Integer>(vc);
+        sorted.putAll(map);
+        return sorted;
+        
+}
+
+    
 
     /**
      * @param aCash  
@@ -262,8 +313,8 @@ public class Monopoly {
                         loyer.add(Integer.parseInt(data.get(i)[j]));
                     }
 
-                                        //Groupe(int _prixAchatMaison, CouleurPropriete _couleur)
-                                        //ProprieteAConstruire(ArrayList<Integer> _loyerMaison, Groupe _groupePropriete, int _loyerBase, int _prixAchat, int _numero, String _nomCarreau)
+                    //Groupe(int _prixAchatMaison, CouleurPropriete _couleur)
+                    //ProprieteAConstruire(ArrayList<Integer> _loyerMaison, Groupe _groupePropriete, int _loyerBase, int _prixAchat, int _numero, String _nomCarreau)
                     carreauAConstruire = new ProprieteAConstruire(loyer, Integer.parseInt(data.get(i)[5]), Integer.parseInt(data.get(i)[4]), Integer.parseInt(data.get(i)[1]), data.get(i)[2], this);
 
                     for (Groupe g : groupe) {
@@ -349,5 +400,8 @@ public class Monopoly {
 
         return data;
     }
-
 }
+    
+
+
+        
