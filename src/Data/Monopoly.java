@@ -392,14 +392,12 @@ public Carte TirerUneCarteCommunaute() {
         Carreau carreauInit = lescarreaux.get(1);
         int nbJoueur;
         Scanner sc1 = new Scanner(System.in);
-        System.out.println("Combien de joueur ? (entre 2 et 6): ");
-        
+        inter.InfosNombreJoueur();
         nbJoueur = Integer.parseInt(sc1.nextLine());
                
         for (int i = 1; i <= nbJoueur; i++) {
             
-            System.out.println("Entrer le nom du joueur " + i + " :");
-            
+            inter.InfosNomJoueur(i);
             Joueur j = new Joueur(sc1.nextLine(), this, carreauInit);
             int de1 = j.resultatDés();
             int de2 = j.resultatDés();

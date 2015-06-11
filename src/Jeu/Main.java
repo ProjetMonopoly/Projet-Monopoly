@@ -25,16 +25,7 @@ public class Main {
         monop = new Monopoly("./src/Data/src");
         
         monop.InitialiserPartie();
-        boolean continu = true;
-        while (continu){
-        
-        for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
 
-            System.out.println("");
-            
-
-            monop.JouerUnCoup(j);
-        }
         while(!monop.partiefinie()){
         
             for (Joueur j : monop.getJoueurs()) {//pour tester si l'inscription des joueurs a bien été effectué
@@ -49,7 +40,6 @@ public class Main {
         monop.getInter().FinPartie(monop);
 
         }
-    }
-} 
+    } 
     
 

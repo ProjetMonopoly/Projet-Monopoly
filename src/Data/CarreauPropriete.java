@@ -24,7 +24,7 @@ public abstract class CarreauPropriete extends Carreau {
     public abstract void achatPropriete(Joueur j);
 
     public void Infos(String aNomCarreau, String aNomG) {
-        throw new UnsupportedOperationException();
+        ;
     }
 
     public String getNomC() {
@@ -58,7 +58,7 @@ public abstract class CarreauPropriete extends Carreau {
     }
 
     public boolean ConstruireRep(Joueur aJ, CouleurPropriete aCouleur, CarreauPropriete aCp) {
-        throw new UnsupportedOperationException();
+        return true;
     }
 
 }
