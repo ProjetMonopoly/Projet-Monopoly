@@ -38,6 +38,13 @@ public class Joueur {
     public int getCash() {
         return this.cash;
     }
+    public boolean isPrison() {
+        return prison;
+    }
+
+    public void setPrison(boolean prison) {
+        this.prison = prison;
+    }
 
     public String getNomJoueur() {
         return this.nomJoueur;
@@ -52,7 +59,7 @@ public class Joueur {
     }
 
     public int getNumCarreau() {
-        return this.positionCourante.getNumPositionCourante();
+        return this.positionCourante.getNumcarreauCourant();
     }
 
     public int getNbGares() {
@@ -69,10 +76,10 @@ public class Joueur {
     }
 
     public void ModifPosition(int numero) {
-        if (positionCourante.getNumPositionCourante() + numero > 40) { //si le numero du carreau + des > 40 alors il y a un decalage
-            setDeplacement(positionCourante.getNumPositionCourante() + numero - 40);
+        if (positionCourante.getNumcarreauCourant() + numero > 40) { //si le numero du carreau + des > 40 alors il y a un decalage
+            setDeplacement(positionCourante.getNumcarreauCourant() + numero - 40);
         } else {
-            setDeplacement(numero + positionCourante.getNumPositionCourante());
+            setDeplacement(numero + positionCourante.getNumcarreauCourant());
         }
     }
 
@@ -172,30 +179,31 @@ public class Joueur {
 
     public boolean PossedeGroupe(Groupe gr) {
 
-        ArrayList<ProprieteAConstruire> propriGroupe;
-        ArrayList<ProprieteAConstruire> propriJoueur;
-        boolean estPresent;
+        ArrayList<ProprieteAConstruire> propriGroupe= new ArrayList();
+        ArrayList<ProprieteAConstruire> propriJoueur= new ArrayList();
+        ArrayList<ProprieteAConstruire> propriOK = new ArrayList();
+        boolean estPresent=false;
 
         propriGroupe = gr.getLesproprietes();
         propriJoueur = this.getLesPropio();
 
-        estPresent = false;
-
         for (ProprieteAConstruire pacGr : propriGroupe) {
             for (ProprieteAConstruire pacJ : propriJoueur) {
-                if (pacGr.equals(pacJ)) {
-                    estPresent = true;
-                    break;
+                if (pacGr==pacJ) {
+                    propriOK.add(pacJ);
                 }
-                estPresent = false;
-            }
-            if (estPresent = false) {
-                break;
             }
         }
-        return estPresent;
+        
+        if (propriGroupe.size()==propriOK.size()){
+            estPresent = true;
+        }
+        else {
+            estPresent = false;
+        }
+        return(estPresent);
     }
-
+                
     public boolean isVerif() {
         return verif;
     }

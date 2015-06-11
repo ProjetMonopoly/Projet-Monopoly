@@ -13,15 +13,25 @@ package Data;
 public abstract class Carte {
     private String description; //Chaque carte possède une description
     private Monopoly monopoly; 
-    public Carte (String des,Monopoly monop) {
+    private int numero;
+    public Carte (int num, String des,Monopoly monop) {
         des = description;
         monop = monopoly; 
+        num= numero;
     }
     
     public abstract void action (Joueur j);
 
     public String getDescription() {
         return description;
+    }
+
+    public int getNumero() {
+        return numero;
+    }
+    
+    public Monopoly getMonop(){
+        return monopoly;
     }
         
     

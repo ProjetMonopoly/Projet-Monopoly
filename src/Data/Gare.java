@@ -2,13 +2,10 @@ package Data;
 
 public class Gare extends CarreauPropriete {
 
-    
     public Gare(int _loyerBase, int _prixAchat, int _numero, String _nomCarreau, Monopoly monop) {
         super(_loyerBase, _prixAchat, _numero, _nomCarreau, monop);
     }
 
-        
-    
     public int calculLoyerGare(int aNbg) {
         return 25 * aNbg;
     }
@@ -21,13 +18,7 @@ public class Gare extends CarreauPropriete {
         int l = this.calculLoyerGare(nbg);
 
         j.setLoyer(l); // pour avoir le prix du loyer
-        
-        Monopoly m = super.getMonopoly();
-        
-        m.InfosLoyerJoueur(j, l);
-        
-        
-        
+
     }
 
     public Monopoly getMonopoly() {
@@ -43,9 +34,7 @@ public class Gare extends CarreauPropriete {
         } else if (jProprio == j) {
             System.out.println("Vous etes les propriétaires, vous n'avez rien à payer");
         } else {
-
             this.calculLoyer(jProprio);
-   
 
             int loyerPro = jProprio.getLoyer();
 
@@ -89,7 +78,5 @@ public class Gare extends CarreauPropriete {
         }
 
     }
-    
-            
-            
+
 }

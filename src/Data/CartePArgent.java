@@ -6,6 +6,8 @@
 
 package Data;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author hoenc
@@ -13,20 +15,37 @@ package Data;
 public class CartePArgent extends Carte {
     private int montant;
 
-    public CartePArgent(int montant, String des, Monopoly monop) {
-        super(des, monop);
+    public CartePArgent(int montant,int num, String des, Monopoly monop) {
+        super(num, des, monop);
         this.montant = montant;
     }
-    public void PayerReparationMaison () {
-        
+    public int PayerReparationMaison (ProprieteAConstruire prop, int prixMaison, int prixHotel) {
+        int nbm = prop.getNbMaisons();
+        if (nbm == 5){
+            return (prixHotel);
+        }else{
+            return (nbm*prixMaison);
+        }
     }
     public void ActionCarteMaison (Joueur j) {
-        
+        ArrayList<ProprieteAConstruire> p = j.getLesPropio();
+        int n = this.getNumero();
+        int pMaison;
+        int pHotel;
+        int prix=0;
+        if (n == 11){
+            pMaison =40;
+            pHotel =115;
+        }else {
+            pMaison =25;
+            pHotel =100;
+        }
+        for (ProprieteAConstruire prop : p){
+            prix =prix +PayerReparationMaison(prop, pMaison, pHotel);
+        }
+        j.setCash(j.getCash()-prix);
     }
-    public int calculprix () {
-        return 0;
-        
-    }
+  
 
     public int getMontant() {
         return montant;
@@ -34,7 +53,12 @@ public class CartePArgent extends Carte {
 
     @Override
     public void action(Joueur j) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if (this.getNumero()!=11 && this.getNumero()!=13){
+            j.setCash(j.getCash()-this.getMontant());
+        }else{
+            ActionCarteMaison(j);
+        }
+        
     }
 
 }

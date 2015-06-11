@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Data;
 
 import java.util.Comparator;
@@ -13,20 +12,19 @@ import java.util.Map;
  *
  * @author curtyl
  */
-        class ValueComparator implements Comparator<String> {
-    
-            Map<String, Integer> map;
-            
-            public ValueComparator(Map<String,Integer> base) {
-                this.map = base;
-            }
+class ValueComparator implements Comparator<Joueur> {
 
-            public int compare(String a, String b) {
-               if (map.get(a) >= map.get(b)) {
+    Map<Joueur, Integer> map;
+
+    public ValueComparator(Map<Joueur, Integer> base) {
+        this.map = base;
+    }
+
+    public int compare(Joueur a, Joueur b) {
+        if (map.get(a) >= map.get(b)) {
             return -1;
         } else {
             return 1;
-        } 
+        }
     }
 }
-

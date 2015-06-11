@@ -13,11 +13,8 @@ package Data;
  */
 public class CartePrison extends Carte {
 
-    public CartePrison(String des, Monopoly monop) {
-        super(des, monop);
-    }
-    public void ActionCartePriso() {
-        
+    public CartePrison(int num, String des, Monopoly monop) {
+        super(num, des, monop);
     }
 
     @Override

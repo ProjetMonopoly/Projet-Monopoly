@@ -22,8 +22,11 @@ public abstract class Carreau {
             this.numero=numero;
 	}
 
+	public boolean getReponse() {
+            return true;
+	}
 
-	public int getNumPositionCourante() {
+	public int getNumcarreauCourant() {
             return numero;
 	}
 

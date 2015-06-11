@@ -9,7 +9,18 @@ public class CarreauMouvement extends CarreauAction {
    
     @Override
     public void action(Joueur j) {
+        j.setPrison(true);
+        
+        Monopoly m = super.getMonopoly();
+        Interface inter= m.getInter();
+        
+        Carreau carreauprison = m.getLesCarreaux().get(11);
+        
+        j.setPositionCourante(carreauprison);
+        inter.InfoPrison();
+
         
     }
+    
     
 }

@@ -6,12 +6,16 @@ import java.util.Scanner;
 public class Interface {
 
     public Monopoly monopoly;
+    
+    public void Interface(Monopoly monopoly){
+        this.monopoly=monopoly;
+    }
 
     public void infoJoueur(int D, Carreau c, Joueur j) {
         System.out.println("Le joueur : " + j.getNomJoueur());
         System.out.println("Total des dés : " + D);
         System.out.println("Le nom du carreau : " + c.getNomCarreau());
-        System.out.println("Le carreau numero : " + c.getNumPositionCourante());
+        System.out.println("Le carreau numero : " + c.getNumcarreauCourant());
     }
 
     public void infoJoueur2(Joueur j, Carreau c) { //a voir
@@ -33,13 +37,7 @@ public class Interface {
         }
     }
 
-    public void InfoAchat(Joueur aJ, CarreauPropriete aCp) {
-        throw new UnsupportedOperationException();
-    }
-
-    public void InfoTerrain(Joueur j, Groupe gr) {
-
-    }
+    
 
     public void infoPropriete(ProprieteAConstruire p, Groupe groupe) {
         System.out.println("La propriété " + p.getNomCarreau() + " a pour groupe " + groupe.getCouleur() + "et possède " + p.getConstruction());
@@ -72,8 +70,10 @@ public class Interface {
         }
     }
 
-    public void InfoConstruire(Joueur j, ArrayList<ProprieteAConstruire> PossibleConstruction) {
+    public void InfoConstruire(Joueur j, ArrayList<ProprieteAConstruire> PossibleConstruction, Monopoly monopoly) {
         int i = 1;
+        
+        
         System.out.println("Joueur : " + j.getNomJoueur());
         System.out.println("Voici vos possibles constructions: ");
         for (ProprieteAConstruire pac : PossibleConstruction) {
@@ -88,22 +88,26 @@ public class Interface {
             i++;
         }
         Scanner sc = new Scanner(System.in);
+        
         System.out.println("Entrez le numéro de la propiété à construire: ");
-        String res = sc.nextLine();
-        if (res == "1") {
+        
+        int res = sc.nextInt();
+        
+        if (res ==1 ) {
             monopoly.getReponse(j, PossibleConstruction.get(0));
-        } else if (res == "2") {
+        } else if (res ==2 ) {
             monopoly.getReponse(j, PossibleConstruction.get(1));
         } else {
             monopoly.getReponse(j, PossibleConstruction.get(2));
         }
     }
 
+
     public void InfoPasConstruire(Joueur j) {
         System.out.println("Joueur : " + j.getNomJoueur());
         System.out.println("Vous ne pouvez pas construire! ");
-		}
- 
+
+    }
 
     public void InfosLoyerJoueur(Joueur j, int L) {
         System.out.println("Le joueur " + j.getNomJoueur() + " a payé un loyer de " + L + ". Son cash est de " + j.getCash());
@@ -112,9 +116,14 @@ public class Interface {
     public void InfosLoyerPro(Joueur j, int L) {
         System.out.println("Le joueur " + j.getNomJoueur() + " a gagné " + L + ". Son cash est de " + j.getCash());
     }
-    
-    public void InfosAchatOuiNon(){
-        System.out.println("Voulez-vous l'acheter (oui/non) ? ");
+    public boolean InfosAchatOuiNon(){
+        Scanner sc1 = new Scanner(System.in);
+        System.out.print("Voulez-vous l'acheter (oui/non) ? ");
+        String reponse = sc1.nextLine();
+        if(reponse.equalsIgnoreCase("oui")){
+            return true;
+        }
+        return false;
     }
     
     public void InfosPossibilitéAchat(Joueur aJ, CarreauPropriete aCp){
@@ -129,4 +138,45 @@ public class Interface {
         System.out.println("Entrer le nom du joueur " + i + " :");
 
     }
+    public void FinPartie(Monopoly monop){
+        Joueur gagnant = null;
+        
+        for(Joueur j:monop.getJoueurs()){
+            if(j.getCash()>0){
+                gagnant=j;
+            }
+        }
+        System.out.println("Votre partie est terminé!");
+        System.out.println("Le joueur qui a gagné est "+gagnant.getNomJoueur()+"!");
+    }
+    
+    public void InfoPrison(){
+    
+        System.out.println("Vous allez en prison!!!");
+    }
+    public void InfoDepart(){
+        System.out.println("Départ: vous recevez 200€!!!");
+    }
+    public void InfoImpot(){
+        System.out.println("Impôts sur le revenu, vous perdez 200€");
+    }
+    public void InfoVisitePrison(){
+    
+        System.out.println("Case Prison: Simple visite!!");
+    }
+    public void InfoParc(){
+    
+        System.out.println("Parc gratuit: reposez-vous!");
+    }
+    public void InfoLuxe(){
+        System.out.println("Taxe de luxe, vous perdez 100€");
+    }
+    public void InfoCarte(Carte ca, Joueur j){
+        System.out.println("le joueur " + j.getNomJoueur()+ " a pioché la carte : " + ca.getDescription());
+    }
+    
+    public void InfoDebPartie(Joueur j, Integer i, int cpt){
+        System.out.println("Le joueur "+ j.getNomJoueur()+ " a fait un " + i + " et est le numéro " + cpt);
+    }
+
 }

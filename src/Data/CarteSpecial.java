@@ -12,8 +12,8 @@ package Data;
  */
 public class CarteSpecial extends Carte {
 
-    public CarteSpecial(String des, Monopoly monop) {
-        super(des, monop);
+    public CarteSpecial(int num, String des, Monopoly monop) {
+        super(num, des, monop);
     }
 
     
